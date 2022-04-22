@@ -9,7 +9,7 @@ const StocksBox = () => {
     const [cryptos, setCryptos] = useState([]);
     const [activeUser, setActiveUser] = useState({portfolio: []})
     const [userPortfolio, setUserPortfolio] = useState([]);
-    const [cashWallet, setCashWallet] = useState(10000)
+    const [cashWallet, setCashWallet] = useState(7000)
     
 
  
@@ -35,20 +35,8 @@ const StocksBox = () => {
     useEffect( ()=>
     {
         getCryptos();
+        createUpdate();
 
-    },[])
-
-    useEffect(()=>
-    {
-        createUpdate()
-        getUsers()
-        .then((re)=>
-        {
-            setActiveUser(re[0])
-            
-        })
-        
-        
     },[userPortfolio])
 
 
@@ -56,7 +44,9 @@ const StocksBox = () => {
     const getCryptos = function (items=100) { // Fetch 100 items by default        
         fetch ('https://api.coincap.io/v2/assets')            
         .then (response => response.json())            
-        .then (result => setCryptos (result.data.slice(0,items)));   
+        .then (result => setCryptos (result.data.slice(0,items)))
+        .then(()=> getUsers()
+        .then((re)=> setActiveUser(re[0])))
      };
 
      const createUpdate = ()=>
@@ -76,9 +66,9 @@ const StocksBox = () => {
     return (
         <>
             <h1>Stocks Box</h1>
-            <UserStats cashWallet={cashWallet}/>
-            <PortfolioList userPortfolio={activeUser.portfolio} sellCrypto={sellCrypto}/>
-            <StocksList cryptos={cryptos} addCrypto={addCrypto} cashWallet={activeUser.cash}/>
+            <UserStats cash={activeUser.cash}/>
+            <PortfolioList portfolio={activeUser.portfolio} sellCrypto={sellCrypto}/>
+            <StocksList cryptos={cryptos} addCrypto={addCrypto} cash={activeUser.cash}/>
         </>
     )
 } 

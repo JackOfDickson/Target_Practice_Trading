@@ -1,9 +1,9 @@
 
-const UserStats = ({cashWallet}) => {
+const UserStats = ({cash}) => {
 
     return (
         <div>
-            <p>Balance: {cashWallet}, Portfolio Value: yes</p>
+            <p>Balance: {cash}, Portfolio Value: yes</p>
         </div>
     )
 }
