@@ -6,6 +6,15 @@ import PortfolioList from "../components/PortfolioList";
 const StocksBox = () => {
 
     const [cryptos, setCryptos] = useState([]);
+    const [userPortfolio, setUserPortfolio] = useState([]);
+
+    const addCrypto = (coin => {
+        let newPortfolio = [... userPortfolio]
+        newPortfolio.push(coin)
+        setUserPortfolio(newPortfolio)
+        //adds to database later
+    })
+
 
     useEffect( ()=>
     {
@@ -25,7 +34,7 @@ const StocksBox = () => {
             <h1>Stocks Box</h1>
             <UserStats/>
             <PortfolioList/>
-            <StocksList cryptos={cryptos}/>
+            <StocksList cryptos={cryptos} addCrypto={addCrypto}/>
         </>
     )
 } 
