@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react"
 import UserStats from "../components/UserStats"
 import StocksList from "../components/StocksList"
+import PortfolioList from "../components/PortfolioList";
 
 const StocksBox = () => {
 
@@ -23,6 +24,7 @@ const StocksBox = () => {
         <>
             <h1>Stocks Box</h1>
             <UserStats/>
+            <PortfolioList/>
             <StocksList cryptos={cryptos}/>
         </>
     )

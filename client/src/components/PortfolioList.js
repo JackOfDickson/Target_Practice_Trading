@@ -3,7 +3,7 @@ import React from "react";
 const PortfolioList = ()=>
 {
     return (
-        <p>Im the portfolio list </p>
+        <p>User portfolio list </p>
     )
 }
 
