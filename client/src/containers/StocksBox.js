@@ -9,10 +9,16 @@ const StocksBox = () => {
     const [userPortfolio, setUserPortfolio] = useState([]);
 
     const addCrypto = (coin => {
-        let newPortfolio = [... userPortfolio]
+        const newPortfolio = [... userPortfolio]
         newPortfolio.push(coin)
         setUserPortfolio(newPortfolio)
         //adds to database later
+    })
+
+    const sellCrypto = ((coin, index) => {
+        const newPortfolio = [... userPortfolio]
+        newPortfolio.splice(index,1)
+        setUserPortfolio(newPortfolio)
     })
 
 
@@ -33,7 +39,7 @@ const StocksBox = () => {
         <>
             <h1>Stocks Box</h1>
             <UserStats/>
-            <PortfolioList/>
+            <PortfolioList userPortfolio={userPortfolio} sellCrypto={sellCrypto}/>
             <StocksList cryptos={cryptos} addCrypto={addCrypto}/>
         </>
     )

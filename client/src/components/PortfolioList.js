@@ -1,9 +1,18 @@
 import React from "react";
+import PortfolioItem from "./PorfolioItem";
 
-const PortfolioList = ()=>
+const PortfolioList = ({userPortfolio, sellCrypto})=>
 {
+    const portfolioNodes = userPortfolio.map((coin, index) => {
+        return (
+        <PortfolioItem coin={coin} index={index} key={index} sellCrypto={sellCrypto}/>
+        )}
+    )
+
     return (
-        <p>User portfolio list </p>
+        <>
+        {portfolioNodes}
+        </>
     )
 }
 
