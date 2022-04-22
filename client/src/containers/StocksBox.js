@@ -2,33 +2,58 @@ import React, {useEffect, useState} from "react"
 import UserStats from "../components/UserStats"
 import StocksList from "../components/StocksList"
 import PortfolioList from "../components/PortfolioList";
+import { getUsers, updateServer } from "../components/ServerService";
 
 const StocksBox = () => {
 
     const [cryptos, setCryptos] = useState([]);
+    const [activeUser, setActiveUser] = useState(null)
     const [userPortfolio, setUserPortfolio] = useState([]);
     const [cashWallet, setCashWallet] = useState(10000)
+    
+
+    const createUpdate = ()=>
+    {
+        const updatedUser = 
+        {
+            name: activeUser.name,
+            email: activeUser.email,
+            cash: cashWallet,
+            portfolio: userPortfolio
+        }
+        updateServer(updatedUser, activeUser._id)
+    }
 
     const addCrypto = ((item, amount) => {
         const newPortfolio = [... userPortfolio]
         const newCoinObj = {coin:item, investment: amount}
-        newPortfolio.push(newCoinObj)
-        setUserPortfolio(newPortfolio)
-        setCashWallet(cashWallet - amount)
+        newPortfolio.push(newCoinObj);
+        setUserPortfolio(newPortfolio);
+        setCashWallet(cashWallet - amount);
+        createUpdate();
         //adds to database later
     })
 
     const sellCrypto = ((index, investment) => {
         const newPortfolio = [... userPortfolio]
-        newPortfolio.splice(index,1)
-        setUserPortfolio(newPortfolio)
-        setCashWallet(cashWallet + investment)
+        newPortfolio.splice(index,1);
+        setUserPortfolio(newPortfolio);
+        setCashWallet(cashWallet + investment);
+        createUpdate();
     })
 
+  
 
     useEffect( ()=>
     {
         getCryptos();
+        getUsers()
+        .then((re)=>
+        {
+            setActiveUser(re[0])
+            setCashWallet(re[0].cash)
+            setUserPortfolio(re[0].portfolio)
+        })
 
     },[])
 
