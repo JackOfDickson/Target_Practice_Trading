@@ -1,4 +1,4 @@
-# Target_Practice_Trading
+# Target Practice Trading
 
 This application was created using Javascript, React, MongoDB, Express, JSX/HTML and CSS3.
 
@@ -9,6 +9,15 @@ Created by Jack, Matt, Stephanie and Kevin :)
 A local trader has come to you with a portfolio of cryptocurrencies that she wants to be able to analyse it more effectively. 
 
 She has a small sample data set to give you and would like you to build a Minimum Viable Product that uses the data to display her portfolio so that she can make better decisions.
+
+## MVP 
+
+The locaol trader should be able to:
+
+- View total current value.
+- View individual and total performance trends.
+- Retrieve a list of share prices from an external API and allow the user to add shares to her portfolio.
+- View a chart of the current values in her portfolio.
 
 ## Target Practice Trading
 
