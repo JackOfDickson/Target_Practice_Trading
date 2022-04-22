@@ -18,10 +18,11 @@ const StocksBox = () => {
         //adds to database later
     })
 
-    const sellCrypto = ((index) => {
+    const sellCrypto = ((index, investment) => {
         const newPortfolio = [... userPortfolio]
         newPortfolio.splice(index,1)
         setUserPortfolio(newPortfolio)
+        setCashWallet(cashWallet + investment)
     })
 
 
@@ -41,7 +42,7 @@ const StocksBox = () => {
     return (
         <>
             <h1>Stocks Box</h1>
-            <UserStats/>
+            <UserStats cashWallet={cashWallet}/>
             <PortfolioList userPortfolio={userPortfolio} sellCrypto={sellCrypto}/>
             <StocksList cryptos={cryptos} addCrypto={addCrypto} cashWallet={cashWallet}/>
         </>

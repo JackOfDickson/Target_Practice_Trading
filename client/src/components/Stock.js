@@ -7,7 +7,7 @@ const Stock = ({coin, addCrypto, cashWallet}) => {
     const handleBuySubmit = (event)=>
     {   
         event.preventDefault();
-        addCrypto(coin, amountInput);
+        addCrypto(coin, Number(amountInput));
         setAmountInput('')
     }
 

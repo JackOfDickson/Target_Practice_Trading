@@ -6,18 +6,18 @@ const PortfolioItem = ({coin, index, sellCrypto}) => {
 
     const handleSellClick = ()=>
     {
-        sellCrypto(coin, index);
+        sellCrypto(index, coin.investment);
     }
 
 
     const priceTo4Decimals = parseFloat(coin.coin.priceUsd).toFixed(4)
 
     return (
-    <>
-        <p>{coin.coin.id}  value: {priceTo4Decimals} amount invested: {coin.investment}</p>
+    <tr>
+        <td>{coin.coin.id}</td>  
+        <td>value: {priceTo4Decimals} amount invested: {coin.investment}</td>
         <button onClick={handleSellClick}>sell coin</button>
-        
-    </>
+    </tr>
     )
 }
 export default PortfolioItem
