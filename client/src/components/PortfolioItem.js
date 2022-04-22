@@ -16,7 +16,7 @@ const PortfolioItem = ({coin, index, sellCrypto}) => {
     <tr>
         <td>{coin.coin.id}</td>  
         <td>value: {priceTo4Decimals} amount invested: {coin.investment}</td>
-        <button onClick={handleSellClick}>sell coin</button>
+        <td><button onClick={handleSellClick}>sell coin</button></td>
     </tr>
     )
 }
