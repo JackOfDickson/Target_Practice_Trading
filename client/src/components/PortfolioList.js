@@ -1,5 +1,5 @@
 import React from "react";
-import PortfolioItem from "./PorfolioItem";
+import PortfolioItem from "./PortfolioItem";
 
 const PortfolioList = ({userPortfolio, sellCrypto})=>
 {
