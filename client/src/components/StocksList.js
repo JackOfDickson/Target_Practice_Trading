@@ -1,11 +1,15 @@
 import Stock from "./Stock"
 
-const StocksList = () => {
+const StocksList = ({cryptos}) => {
+
+    const cryptoList = cryptos.map(coin=>
+        { return (
+            <Stock coin={coin} key={coin.id}/>
+        ) })
 
     return (
         <div>
-            <p>List of Stocks</p>
-            <Stock/>
+            {cryptoList}
         </div>
     )
 }

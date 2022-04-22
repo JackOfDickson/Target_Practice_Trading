@@ -1,9 +1,9 @@
 import React from "react";
 
-const Stock = () =>
+const Stock = ({coin}) =>
 {
     return (
-        <p>I am a stock </p>
+       <p>{coin.id}  value: {coin.priceUsd}</p>
     )
 }
 
