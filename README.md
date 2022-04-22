@@ -12,7 +12,7 @@ She has a small sample data set to give you and would like you to build a Minimu
 
 ## MVP 
 
-The locaol trader should be able to:
+The local trader should be able to:
 
 - View total current value.
 - View individual and total performance trends.
