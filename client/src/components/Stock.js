@@ -1,10 +1,25 @@
-import React from "react";
+import React, {useState} from "react";
 
-const Stock = ({coin, addCrypto}) => {
+const Stock = ({coin, addCrypto, cashWallet}) => {
 
-    const handleAddClick = ()=>
+    const [amountInput, setAmountInput] = useState('');
+
+    const handleBuySubmit = (event)=>
+    {   
+        event.preventDefault();
+        addCrypto(coin, amountInput);
+        setAmountInput('')
+    }
+
+    const handleAmountChange = (event)=>
     {
-        addCrypto(coin);
+        if (event.target.value > cashWallet)
+        {
+
+        }
+        else{
+        setAmountInput(event.target.value)
+        }
     }
 
     const priceTo4Decimals = parseFloat(coin.priceUsd).toFixed(4)
@@ -12,7 +27,10 @@ const Stock = ({coin, addCrypto}) => {
     return (
     <>
        <p>{coin.id}  value: {priceTo4Decimals}</p>
-       <button onClick={handleAddClick}>Buy coin</button>
+         <form onSubmit={handleBuySubmit}>
+            <button type='submit'>Buy coin</button>
+            <input type='number' value={amountInput} onChange={handleAmountChange} required></input>
+        </form>
     </>
     )
 }

@@ -1,6 +1,8 @@
-
+import React from "react";
 
 const PortfolioItem = ({coin, index, sellCrypto}) => {
+
+    
 
     const handleSellClick = ()=>
     {
@@ -8,12 +10,13 @@ const PortfolioItem = ({coin, index, sellCrypto}) => {
     }
 
 
-    const priceTo4Decimals = parseFloat(coin.priceUsd).toFixed(4)
+    const priceTo4Decimals = parseFloat(coin.coin.priceUsd).toFixed(4)
 
     return (
     <>
-        <p>{coin.id}  value: {priceTo4Decimals}</p>
+        <p>{coin.coin.id}  value: {priceTo4Decimals} amount invested: {coin.investment}</p>
         <button onClick={handleSellClick}>sell coin</button>
+        
     </>
     )
 }

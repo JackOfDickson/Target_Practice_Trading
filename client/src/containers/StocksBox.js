@@ -7,15 +7,18 @@ const StocksBox = () => {
 
     const [cryptos, setCryptos] = useState([]);
     const [userPortfolio, setUserPortfolio] = useState([]);
+    const [cashWallet, setCashWallet] = useState(10000)
 
-    const addCrypto = (coin => {
+    const addCrypto = ((item, amount) => {
         const newPortfolio = [... userPortfolio]
-        newPortfolio.push(coin)
+        const newCoinObj = {coin:item, investment: amount}
+        newPortfolio.push(newCoinObj)
         setUserPortfolio(newPortfolio)
+        setCashWallet(cashWallet - amount)
         //adds to database later
     })
 
-    const sellCrypto = ((coin, index) => {
+    const sellCrypto = ((index) => {
         const newPortfolio = [... userPortfolio]
         newPortfolio.splice(index,1)
         setUserPortfolio(newPortfolio)
@@ -40,7 +43,7 @@ const StocksBox = () => {
             <h1>Stocks Box</h1>
             <UserStats/>
             <PortfolioList userPortfolio={userPortfolio} sellCrypto={sellCrypto}/>
-            <StocksList cryptos={cryptos} addCrypto={addCrypto}/>
+            <StocksList cryptos={cryptos} addCrypto={addCrypto} cashWallet={cashWallet}/>
         </>
     )
 } 
