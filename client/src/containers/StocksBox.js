@@ -40,14 +40,16 @@ const StocksBox = () => {
 
     useEffect(()=>
     {
-        createUpdate();
+        createUpdate()
         getUsers()
         .then((re)=>
         {
             setActiveUser(re[0])
             
         })
-    },[cashWallet, userPortfolio])
+        
+        
+    },[userPortfolio])
 
 
 
