@@ -7,39 +7,27 @@ import { getUsers, updateServer } from "../components/ServerService";
 const StocksBox = () => {
 
     const [cryptos, setCryptos] = useState([]);
-    const [activeUser, setActiveUser] = useState(null)
+    const [activeUser, setActiveUser] = useState({portfolio: []})
     const [userPortfolio, setUserPortfolio] = useState([]);
     const [cashWallet, setCashWallet] = useState(10000)
     
 
-    const createUpdate = ()=>
-    {
-        const updatedUser = 
-        {
-            name: activeUser.name,
-            email: activeUser.email,
-            cash: cashWallet,
-            portfolio: userPortfolio
-        }
-        updateServer(updatedUser, activeUser._id)
-    }
-
+ 
     const addCrypto = ((item, amount) => {
-        const newPortfolio = [... userPortfolio]
+        const newPortfolio = [... activeUser.portfolio]
         const newCoinObj = {coin:item, investment: amount}
         newPortfolio.push(newCoinObj);
         setUserPortfolio(newPortfolio);
-        setCashWallet(cashWallet - amount);
-        createUpdate();
+        setCashWallet(activeUser.cash - amount)
         //adds to database later
     })
 
     const sellCrypto = ((index, investment) => {
-        const newPortfolio = [... userPortfolio]
+        const newPortfolio = [... activeUser.portfolio]
         newPortfolio.splice(index,1);
         setUserPortfolio(newPortfolio);
-        setCashWallet(cashWallet + investment);
-        createUpdate();
+        setCashWallet(activeUser.cash + investment)
+        
     })
 
   
@@ -47,15 +35,21 @@ const StocksBox = () => {
     useEffect( ()=>
     {
         getCryptos();
+
+    },[])
+
+    useEffect(()=>
+    {
+        createUpdate();
         getUsers()
         .then((re)=>
         {
             setActiveUser(re[0])
-            setCashWallet(re[0].cash)
-            setUserPortfolio(re[0].portfolio)
+            
         })
+    },[cashWallet, userPortfolio])
 
-    },[])
+
 
     const getCryptos = function (items=100) { // Fetch 100 items by default        
         fetch ('https://api.coincap.io/v2/assets')            
@@ -63,13 +57,26 @@ const StocksBox = () => {
         .then (result => setCryptos (result.data.slice(0,items)));   
      };
 
+     const createUpdate = ()=>
+     {
+         const updatedUser={
+             name: activeUser.name,
+             email: activeUser.email,
+             cash: cashWallet,
+             portfolio: userPortfolio
+         }
+         updateServer(updatedUser, activeUser._id)
+         
+     }
+ 
+
 
     return (
         <>
             <h1>Stocks Box</h1>
             <UserStats cashWallet={cashWallet}/>
-            <PortfolioList userPortfolio={userPortfolio} sellCrypto={sellCrypto}/>
-            <StocksList cryptos={cryptos} addCrypto={addCrypto} cashWallet={cashWallet}/>
+            <PortfolioList userPortfolio={activeUser.portfolio} sellCrypto={sellCrypto}/>
+            <StocksList cryptos={cryptos} addCrypto={addCrypto} cashWallet={activeUser.cash}/>
         </>
     )
 } 
