@@ -1,4 +1,5 @@
-import Stock from "./Stock"
+import Stock from "./Stock";
+import MoversShakers from "./MoversShakers";
 
 const StocksList = ({cryptos, addCrypto, cash}) => {
 
@@ -16,6 +17,7 @@ const StocksList = ({cryptos, addCrypto, cash}) => {
                 <header>
                     <h2>Market</h2>
                 </header>
+                <MoversShakers cryptos={cryptos}/>
                 <table>
                     {cryptoList}
                 </table>
