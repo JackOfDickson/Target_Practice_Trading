@@ -30,8 +30,8 @@ const Stock = ({coin, addCrypto, cashWallet}) => {
         <td>{coin.symbol}</td> 
         <td>Price: {priceTo4Decimals}</td>
         <td><form onSubmit={handleBuySubmit}>
-             <td><button type='submit'>Buy coin</button></td>
-             <td><input type='number' value={amountInput}  min="0" onChange={handleAmountChange} required></input></td>
+             <button type='submit'>Buy Coin</button>
+             <input type='number' value={amountInput}  min="0" onChange={handleAmountChange} required></input>
          </form></td>
      </tr>
     )
