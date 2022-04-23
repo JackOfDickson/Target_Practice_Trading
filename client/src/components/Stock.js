@@ -25,13 +25,15 @@ const Stock = ({coin, addCrypto, cashWallet}) => {
     const priceTo4Decimals = parseFloat(coin.priceUsd).toFixed(4)
 
     return (
-    <>
-       <p>{coin.id}  value: {priceTo4Decimals}</p>
-        <form onSubmit={handleBuySubmit}>
-            <button type='submit'>Buy coin</button>
-            <input type='number' value={amountInput} onChange={handleAmountChange} required></input>
-        </form>
-    </>
+    <tr>
+        <td>{coin.id}</td>
+        <td>{coin.symbol}</td> 
+        <td>Price: {priceTo4Decimals}</td>
+        <td><form onSubmit={handleBuySubmit}>
+             <td><button type='submit'>Buy coin</button></td>
+             <td><input type='number' value={amountInput} onChange={handleAmountChange} required></input></td>
+         </form></td>
+     </tr>
     )
 }
 

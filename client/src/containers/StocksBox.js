@@ -9,7 +9,7 @@ const StocksBox = () => {
     const [cryptos, setCryptos] = useState([]);
     const [activeUser, setActiveUser] = useState({portfolio: []})
     const [userPortfolio, setUserPortfolio] = useState([]);
-    const [cashWallet, setCashWallet] = useState(7000)
+    const [cashWallet, setCashWallet] = useState(0)
     
 
  
