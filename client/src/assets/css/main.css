@@ -2029,6 +2029,7 @@ input, select, textarea {
 			font-size: 1.5em;
 		}
 
+
 /* Header */
 
 	#header {
@@ -2180,6 +2181,14 @@ input, select, textarea {
 					#nav ul li a.active span:before {
 						color: #4579ff;
 					}
+
+					#nav ul li a:hover {
+						
+						color: white;
+						background-color: #4579ff;
+					}
+					
+
 
 /* Footer */
 
@@ -2382,6 +2391,8 @@ input, select, textarea {
 						margin-left: -1.25em;
 						line-height: 2.25em;
 					}
+
+					
 
 		/* Footer */
 
