@@ -1,11 +1,22 @@
 import react from "react"
 import StocksBox from "./containers/StocksBox";
+import Intro from "./designComponents/intro";
+import Header from "./designComponents/header";
+import Footer from "./designComponents/footer"
 
 function App() {
   return (
-    <div className="App">
+  
+	<>
+	<Header />
+    <div id="main">
+      <Intro/>
       <StocksBox/>
     </div>
+	<Footer />
+
+	
+    </>
   );
 }
 
