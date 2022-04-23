@@ -22,18 +22,21 @@ const Stock = ({coin, addCrypto, cashWallet}) => {
         }
     }
 
-    const priceTo4Decimals = parseFloat(coin.priceUsd).toFixed(4)
+    const priceTo2Decimals = parseFloat(coin.priceUsd).toFixed(2); // Show price to two decimal places
+    // const cryptoPrice = parseFloat(priceTo2Decimals).toLocaleString("en-US"); // Separate large numbers with commas
 
     return (
     <tr>
-        <td>{coin.id}</td>
+        <td>{coin.name}</td>
         <td>{coin.symbol}</td> 
-        <td>Price: {priceTo4Decimals}</td>
-        <td><form onSubmit={handleBuySubmit}>
-             <button type='submit'>Buy Coin</button>
-             <input type='number' value={amountInput}  min="0" onChange={handleAmountChange} required></input>
-         </form></td>
-     </tr>
+        <td>Price: ${priceTo2Decimals}</td>
+        <td>
+            <form onSubmit={handleBuySubmit}>
+                <button type='submit'>Buy Coin</button>
+                <input type='number' value={amountInput} min="0" onChange={handleAmountChange} required></input>
+            </form>
+        </td>
+    </tr>
     )
 }
 

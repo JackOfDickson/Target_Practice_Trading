@@ -11,12 +11,14 @@ const StocksList = ({cryptos, addCrypto, cash}) => {
 
     return (
         <section id="market" class="five">
-        <div class="container">
+            <div class="container">
 
-            <header>
-                <h2>Market</h2>
-            </header>
-            {cryptoList}
+                <header>
+                    <h2>Market</h2>
+                </header>
+                <table>
+                    {cryptoList}
+                </table>
             </div>
 		</section>
     )
