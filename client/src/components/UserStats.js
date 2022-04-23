@@ -3,7 +3,7 @@ const UserStats = ({cash}) => {
 
     return (
 
-        <section id="user-stats" class="two">
+        <section id="user-stats" class="three">
         <div className="container">
 
             <header>

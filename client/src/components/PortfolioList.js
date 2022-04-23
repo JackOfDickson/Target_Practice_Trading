@@ -11,7 +11,7 @@ const PortfolioList = ({portfolio, sellCrypto})=>
 
     return (
         
-        <section id="portfolio" class="three">
+        <section id="portfolio" class="four">
         <div class="container">
             <header>
                 <h2>Portfolio</h2>
