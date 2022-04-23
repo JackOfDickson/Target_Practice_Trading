@@ -4,7 +4,7 @@ const Intro = () => {
 
     return  (
         <section id="top" class="one dark cover">
-            <div class="container">
+            <div className="container">
 
                 <header>
                     <h2 class="h2">Are You an Expert Trader? </h2>

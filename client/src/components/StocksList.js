@@ -10,9 +10,15 @@ const StocksList = ({cryptos, addCrypto, cash}) => {
         )})
 
     return (
-        <div>
+        <section id="market" class="four">
+        <div class="container">
+
+            <header>
+                <h2>Market</h2>
+            </header>
             {cryptoList}
-        </div>
+            </div>
+		</section>
     )
 }
 export default StocksList

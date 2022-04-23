@@ -10,9 +10,16 @@ const PortfolioList = ({portfolio, sellCrypto})=>
     )
 
     return (
-        <>
+        
+        <section id="portfolio" class="three">
+        <div class="container">
+            <header>
+                <h2>Portfolio</h2>
+            </header>
         {portfolioNodes}
-        </>
+        </div>
+        </section>
+        
     )
 }
 

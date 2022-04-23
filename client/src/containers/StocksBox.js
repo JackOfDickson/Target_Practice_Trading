@@ -65,7 +65,6 @@ const StocksBox = () => {
 
     return (
         <>
-            <h1>Stocks Box</h1>
             <UserStats cash={activeUser.cash}/>
             <PortfolioList portfolio={activeUser.portfolio} sellCrypto={sellCrypto}/>
             <StocksList cryptos={cryptos} addCrypto={addCrypto} cash={activeUser.cash}/>

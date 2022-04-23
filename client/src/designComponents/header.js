@@ -21,8 +21,8 @@ const Header = () => {
                     <nav id="nav">
                         <ul>
                             <li><a href="#top" id="top-link"><span className="icon solid fa-home">Intro</span></a></li>
+                            <li><a href="#user-stats" id="stats-link"><span className="icon solid fa-user">User Stats</span></a></li>
                             <li><a href="#portfolio" id="portfolio-link"><span className="icon solid fa-th">Portfolio</span></a></li>
-                            <li><a href="#about" id="about-link"><span className="icon solid fa-user">About Me</span></a></li>
                             <li><a href="#market" id="market-link"><span className="icon brands fa-bitcoin">Market</span></a></li>
                         </ul>
                     </nav>

@@ -14,8 +14,6 @@ function App() {
       <StocksBox/>
     </div>
 	<Footer />
-
-	
     </>
   );
 }
