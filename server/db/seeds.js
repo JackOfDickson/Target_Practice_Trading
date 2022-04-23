@@ -9,15 +9,15 @@ db.users.insertMany([
         [
             {
                 coin: "BTC",
-                quantity: 0.2
+                amount: 0.2
             },
             {
                 coin: "ETH",
-                quantity: 2.5
+                amount: 2.5
             },
             {
                 coin: "BNB",
-                quantity: 0.5
+                amount: 0.5
             },
         ] 
     },

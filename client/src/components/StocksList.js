@@ -6,6 +6,7 @@ const StocksList = ({cryptos, addCrypto, cashWallet}) => {
         { 
             
             return (
+                
                 <Stock coin={coin} key={coin.id} addCrypto={addCrypto} cashWallet={cashWallet}/>
         )})
 
