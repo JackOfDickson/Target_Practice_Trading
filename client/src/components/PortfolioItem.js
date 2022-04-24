@@ -6,7 +6,7 @@ const PortfolioItem = ({coin, index, sellCrypto}) => {
 
     const handleSellClick = ()=>
     {
-        sellCrypto(index, coin.investment);
+        sellCrypto(index);
     }
 
 

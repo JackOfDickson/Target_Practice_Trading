@@ -35,13 +35,13 @@ const StocksBox = () => {
         //adds crypto to user database and portfolio 
     })
 
-    const sellCrypto = ((index, investment) => {
+    const sellCrypto = ((index) => {
         const newPortfolio = [... activeUser.portfolio]
         const removedCoin = newPortfolio.splice(index,1);
         const coinCurrentState = cryptos.find(crypto=> crypto.name === removedCoin[0].coin.name)
         const sellAmount = Number(coinCurrentState.priceUsd)*Number(removedCoin[0].coin_amount)
         setUserPortfolio(newPortfolio);
-        setCashWallet(activeUser.cash + sellAmount)
+        setCashWallet(activeUser.cash + Number(sellAmount.toFixed(2)))
         // sell crypto and update database
     })
 
