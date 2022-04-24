@@ -1,8 +1,9 @@
-import React, {useEffect, useState} from "react"
+import React, {useEffect, useState, useRef} from "react"
 import UserStats from "../components/UserStats"
 import StocksList from "../components/StocksList"
 import PortfolioList from "../components/PortfolioList";
 import { getUsers, updateServer } from "../components/ServerService";
+import { calculateIncrease } from "../components/Calculator";
 
 const StocksBox = () => {
 
@@ -10,16 +11,31 @@ const StocksBox = () => {
     const [activeUser, setActiveUser] = useState({portfolio: []})
     const [userPortfolio, setUserPortfolio] = useState([]);
     const [cashWallet, setCashWallet] = useState(0)
+    const [investmentValue, setInvestmentValue] = useState(false)
     
+    const first = useRef(true);
 
     useEffect(() => {
         const interval = setInterval(() => {
-            getCryptos();
+            getCryptos()
         }, 60);
         return () => clearInterval(interval);
       }, []); 
       // fetches the API every 60 seconds to update live the market prices
 
+    useEffect(()=>
+    {
+        if (first.current)
+        {
+            first.current = false;
+            return;
+        }
+        else if (activeUser.portfolio)
+        {
+            setInvestmentValue(calculateIncrease(activeUser.portfolio, cryptos));
+        }
+        }, [cryptos])
+    
 
       const coinAmount = (coin, amount_usd) => {
         return amount_usd/coin.priceUsd
@@ -84,7 +100,7 @@ const StocksBox = () => {
     return (
         <>
             <UserStats cash={activeUser.cash}/>
-            <PortfolioList portfolio={activeUser.portfolio} sellCrypto={sellCrypto}/>
+            <PortfolioList portfolio={activeUser.portfolio} sellCrypto={sellCrypto} investmentValue={investmentValue}/>
             <StocksList cryptos={cryptos} addCrypto={addCrypto} cash={activeUser.cash}/>
         </>
     )
