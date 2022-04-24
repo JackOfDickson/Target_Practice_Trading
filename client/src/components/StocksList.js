@@ -1,5 +1,4 @@
-import Stock from "./Stock";
-import MoversShakers from "./MoversShakers";
+import Stock from "./Stock"
 
 const StocksList = ({cryptos, addCrypto, cash}) => {
 
@@ -17,7 +16,6 @@ const StocksList = ({cryptos, addCrypto, cash}) => {
                 <header>
                     <h2>Market</h2>
                 </header>
-                <MoversShakers cryptos={cryptos}/>
                 <table>
                     {cryptoList}
                 </table>
@@ -25,4 +23,4 @@ const StocksList = ({cryptos, addCrypto, cash}) => {
 		</section>
     )
 }
-export default StocksList
+export default StocksList;
