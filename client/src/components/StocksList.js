@@ -1,4 +1,5 @@
 import Stock from "./Stock"
+import MoversShakers from './MoversShakers'
 
 const StocksList = ({cryptos, addCrypto, cash}) => {
 
