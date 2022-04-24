@@ -1,4 +1,5 @@
-import React from "react"
+import React from "react";
+import './css/MoversShakers.css'
 
 const MoversShakers = ({cryptos}) => {
 
@@ -19,10 +20,13 @@ const MoversShakers = ({cryptos}) => {
     const bestCryptosList = bestCryptos.slice(0, 5).map(coin=>{ 
         const diff = parseFloat(coin.changePercent24Hr).toFixed(2); // Only show two decimal places in percentage
 
+        const formatPrice = parseFloat(coin.priceUsd).toFixed(2);
+        const coinPrice = parseFloat(formatPrice).toLocaleString("en-US"); // Separate large numbers with commas
+
             return (
-                <>
-            <p>{coin.name} {diff}%</p>
-                </>
+                <div className="bestCryptoDetails">
+                    <p>{coin.name}  ({coin.symbol}) &nbsp;${coinPrice}  <span className="bestPercentage">{diff}%</span></p>
+                </div>
             )
         })
 
@@ -30,23 +34,29 @@ const MoversShakers = ({cryptos}) => {
     const worstCryptosList = worstCryptos.slice(0, 5).map(coin=>{ 
         const diff = parseFloat(coin.changePercent24Hr).toFixed(2); // Only show two decimal places in percentage
 
+        const formatPrice = parseFloat(coin.priceUsd).toFixed(2);
+        const coinPrice = parseFloat(formatPrice).toLocaleString("en-US"); // Separate large numbers with commas
+
+
             return (
-                <>
-            <p>{coin.name} {diff}%</p>
-                </>
+                <div className="worstCryptoDetails">
+                    <p>{coin.name} ({coin.symbol}) &nbsp;${coinPrice} <span className="worstPercentage">{diff}%</span></p>
+                </div>
             )
         })
 
+ 
 
     return (
         <div id="movers-shakers">
             <h3>Movers & Shakers</h3>
             <p>Check out the biggest shifts in the market over the last 24 hours.</p>
             
-            <p>{bestCryptosList}</p>
-            <p>{worstCryptosList}</p>
-
+            <div id="movers-shakers-box">
+                <div className="best">{bestCryptosList}</div>
+                <div className="worst">{worstCryptosList}</div>
+            </div>
         </div>
     )
 }
-export default MoversShakers
+export default MoversShakers;
