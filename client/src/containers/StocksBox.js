@@ -12,6 +12,14 @@ const StocksBox = () => {
     const [cashWallet, setCashWallet] = useState(0)
     
 
+    useEffect(() => {
+        const interval = setInterval(() => {
+            getCryptos();
+        }, 60);
+        return () => clearInterval(interval);
+      }, []); 
+
+
  
     const addCrypto = ((item, amount) => {
         const newPortfolio = [... activeUser.portfolio]
@@ -30,12 +38,13 @@ const StocksBox = () => {
         
     })
 
-  
+    
+
 
     useEffect( ()=>
     {
-        getCryptos();
         createUpdate();
+        
 
     },[userPortfolio])
 

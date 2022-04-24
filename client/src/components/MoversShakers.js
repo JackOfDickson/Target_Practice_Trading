@@ -3,15 +3,15 @@ import React from "react"
 const MoversShakers = ({cryptos}) => {
 
 
-
     // function to sort cryptos by the best performing cryptos over the last 24 hours
-    const bestCryptos = cryptos.sort(function(a, b) {
+    const cryptosCopy= cryptos.map((x) => x); // Create duplicate list in order to sort cryptos by worst performance
+    const bestCryptos = cryptosCopy.sort(function(a, b) {
         return b.changePercent24Hr-a.changePercent24Hr;
     });
 
     // function to sort cryptos by the worst performing cryptos over the last 24 hours
-    const cryptosCopy= cryptos.map((x) => x); // Create duplicate list in order to sort cryptos by worst performance
-    const worstCryptos = cryptosCopy.sort(function(a, b) {
+    const cryptosCopy2= cryptos.map((x) => x); // Create duplicate list in order to sort cryptos by worst performance
+    const worstCryptos = cryptosCopy2.sort(function(a, b) {
         return a.changePercent24Hr-b.changePercent24Hr;
     });
 
