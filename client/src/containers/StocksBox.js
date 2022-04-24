@@ -18,6 +18,7 @@ const StocksBox = () => {
         }, 60);
         return () => clearInterval(interval);
       }, []); 
+      // fetches the API every 60 seconds to update live the market prices
 
 
  
@@ -27,7 +28,7 @@ const StocksBox = () => {
         newPortfolio.push(newCoinObj);
         setUserPortfolio(newPortfolio);
         setCashWallet(activeUser.cash - amount)
-        //adds to database later
+        //adds crypto to user database and portfolio 
     })
 
     const sellCrypto = ((index, investment) => {
@@ -35,7 +36,7 @@ const StocksBox = () => {
         newPortfolio.splice(index,1);
         setUserPortfolio(newPortfolio);
         setCashWallet(activeUser.cash + investment)
-        
+        // sell crypto and update database
     })
 
     
@@ -47,6 +48,7 @@ const StocksBox = () => {
         
 
     },[userPortfolio])
+    // calls the create update every time the user buys or sells crypto to push to database
 
 
 
@@ -57,6 +59,7 @@ const StocksBox = () => {
         .then(()=> getUsers()
         .then((re)=> setActiveUser(re[0])))
      };
+     // fetches API and users from database and update the corresponding states
 
      const createUpdate = ()=>
      {
@@ -67,9 +70,9 @@ const StocksBox = () => {
              portfolio: userPortfolio
          }
          updateServer(updatedUser, activeUser._id)
-         
-     }
- 
+    }
+    // creates the updated user object and pushes is to the database
+     
 
 
     return (
