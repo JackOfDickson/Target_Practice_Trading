@@ -23,4 +23,4 @@ const StocksList = ({cryptos, addCrypto, cash}) => {
 		</section>
     )
 }
-export default StocksList
+export default StocksList;
