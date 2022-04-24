@@ -21,10 +21,14 @@ const StocksBox = () => {
       // fetches the API every 60 seconds to update live the market prices
 
 
+      const coinAmount = (coin, amount_usd) => {
+        return amount_usd/coin.priceUsd
+    }
+
  
     const addCrypto = ((item, amount) => {
         const newPortfolio = [... activeUser.portfolio]
-        const newCoinObj = {coin:item, investment: amount}
+        const newCoinObj = {coin:item, investment: amount, coin_amount: coinAmount(item, amount)}
         newPortfolio.push(newCoinObj);
         setUserPortfolio(newPortfolio);
         setCashWallet(activeUser.cash - amount)
@@ -33,9 +37,11 @@ const StocksBox = () => {
 
     const sellCrypto = ((index, investment) => {
         const newPortfolio = [... activeUser.portfolio]
-        newPortfolio.splice(index,1);
+        const removedCoin = newPortfolio.splice(index,1);
+        const coinCurrentState = cryptos.find(crypto=> crypto.name === removedCoin[0].coin.name)
+        const sellAmount = Number(coinCurrentState.priceUsd)*Number(removedCoin[0].coin_amount)
         setUserPortfolio(newPortfolio);
-        setCashWallet(activeUser.cash + investment)
+        setCashWallet(activeUser.cash + sellAmount)
         // sell crypto and update database
     })
 
