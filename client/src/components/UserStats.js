@@ -60,13 +60,11 @@ const UserStats = ({activeUser, investmentValue}) => {
   
     if (investmentValue) { // check to see investments exist
         investmentValue.map( crypto => {
-            const coinInfo=[crypto.coin, crypto.sell_price]
-            data.push(coinInfo)
+            const coinInfo=[crypto.coin, crypto.sell_price];
+            data.push(coinInfo);
         });
 
     }
-
-        
     const options = {
         title: "Value of Invested Cryptos in USD",
         width: 900,
@@ -84,6 +82,14 @@ const UserStats = ({activeUser, investmentValue}) => {
                 <h2>User Stats</h2>
             </header>
 
+            <Chart
+                chartType="BarChart"
+                width="100%"
+                height="400px"
+                data={data}
+                options={options}
+            />
+
             <div id="user-stats-box">
                 <div className="left">
                     <p>Initial Investment: $10,000</p>
@@ -99,14 +105,6 @@ const UserStats = ({activeUser, investmentValue}) => {
 
                 </div>
             </div>
-            
-            <Chart
-                chartType="BarChart"
-                width="100%"
-                height="400px"
-                data={data}
-                options={options}
-            />
 
         </div>
     </section>
