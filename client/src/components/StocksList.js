@@ -28,7 +28,7 @@ const StocksList = ({cryptos, addCrypto, cash, searchCryptos, searchTerm}) => {
                 </header>
 	     	<MoversShakers cryptos={cryptos}/>
 
-             <input onChange={handleSearch} type="search" id="search" name="search" placeholder="Search Cryptocurrencies" />
+             <input onChange={handleSearch} type="search" id="search" name="search" placeholder="Search Cryptos" />
 
                 <table>
                     {cryptoList}
