@@ -5,6 +5,7 @@ export const getUsers = ()=>
     return fetch(baseUrl)
     .then(re=> re.json());
 }
+// fetches user info from database
 
 export const updateServer = (data, id)=>
 {
@@ -15,3 +16,5 @@ export const updateServer = (data, id)=>
             headers: {'Content-Type': 'application/json'}
         })
 }
+
+// updates the user object on database

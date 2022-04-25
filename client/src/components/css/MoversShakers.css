@@ -1,0 +1,18 @@
+#movers-shakers h3 {
+    width:30%;
+    border-bottom: 2px solid green;
+    margin-bottom:15px;
+}
+
+#movers-shakers-box {
+    display:flex;
+    flex-direction: row;
+    margin:auto;
+}
+
+.best, .worst {flex:50%;padding:10px; }
+.best p, .worst p {padding:10px;font-weight: 700;color:black; box-shadow: 5px 5px black;}
+.best p {background-color: #e6f8eb;}
+.worst p {background-color: #f8e4e6;}
+.bestPercentage {float:right;color:green;}
+.worstPercentage {float:right;color:red;}
