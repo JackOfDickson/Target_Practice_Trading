@@ -1,7 +1,8 @@
 import React from "react";
 import PortfolioItem from "./PortfolioItem";
+import PortfolioCharts from "./PortfolioCharts";
 
-const PortfolioList = ({portfolio, sellCrypto, investmentValue})=>
+const PortfolioList = ({portfolio, sellCrypto, investmentValue, cash})=>
 {
     const portfolioNodes = portfolio.map((coin, index) => {
         if (investmentValue)
@@ -33,6 +34,8 @@ const PortfolioList = ({portfolio, sellCrypto, investmentValue})=>
                 <h2>Portfolio</h2>
             </header>
         {portfolioNodes}
+        <PortfolioCharts portfolio={portfolio} cash={cash}/>
+        
         </div>
         </section>
         

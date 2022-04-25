@@ -1,6 +1,6 @@
 import { Charts } from "react-google-charts"
 
-const PortfolioCharts = ({portfolio}) => {
+const PortfolioCharts = ({portfolio, cash}) => {
 
 
 
