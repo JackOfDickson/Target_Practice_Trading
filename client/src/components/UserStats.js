@@ -1,4 +1,5 @@
-import './css/UserStats.css'
+import './css/UserStats.css';
+import { Chart } from "react-google-charts";
 
 
 const UserStats = ({activeUser, investmentValue}) => {
@@ -25,6 +26,7 @@ const UserStats = ({activeUser, investmentValue}) => {
     // map investment portfolio
     let investmentPortfolio;
     let investmentCalculation = 0;
+
     if (investmentValue) { // check to see investments exist
 
     investmentPortfolio = investmentValue.map( crypto => {
@@ -44,6 +46,7 @@ const UserStats = ({activeUser, investmentValue}) => {
 
     }  
 
+    // Calculation and formatting for cash and crypto balances
     const formatInvestmentTotalValue = parseFloat(investmentCalculation).toFixed(2); // format sell price to two decimal places
     const investmentTotalValue = parseFloat(formatInvestmentTotalValue).toLocaleString("en-US"); // Separate large numbers with commas
 
@@ -51,6 +54,26 @@ const UserStats = ({activeUser, investmentValue}) => {
     const formatWorkingBalance = parseFloat(workingBalance).toFixed(2); // format sell price to two decimal places
     const equityBalance = parseFloat(formatWorkingBalance).toLocaleString("en-US"); // Separate large numbers with commas
 
+    // Data for User stats chart
+
+    let data = [["Crypto", "USD Value"]];
+  
+    if (investmentValue) { // check to see investments exist
+        investmentValue.map( crypto => {
+            const coinInfo=[crypto.coin, crypto.sell_price]
+            data.push(coinInfo)
+        });
+
+    }
+
+        
+    const options = {
+        title: "Value of Invested Cryptos in USD",
+        width: 900,
+        height: 400,
+        bar: { groupWidth: "95%" },
+        legend: { position: "none" },
+        };
 
     return (
 
@@ -76,7 +99,14 @@ const UserStats = ({activeUser, investmentValue}) => {
 
                 </div>
             </div>
-
+            
+            <Chart
+                chartType="BarChart"
+                width="100%"
+                height="400px"
+                data={data}
+                options={options}
+            />
 
         </div>
     </section>
@@ -84,4 +114,4 @@ const UserStats = ({activeUser, investmentValue}) => {
 
     )
 }
-export default UserStats
+export default UserStats;
