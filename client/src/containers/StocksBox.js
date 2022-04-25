@@ -138,7 +138,7 @@ const StocksBox = () => {
 
     return (
         <>
-            <UserStats cash={activeUser.cash}/>
+            <UserStats activeUser={activeUser} investmentValue={investmentValue}/>
             <CurrencySelector cryptos={cryptos} onCurrencySelect={onCurrencySelect} handleMysteryCoin={handleMysteryCoin}/>
             {message}
             <PortfolioList portfolio={activeUser.portfolio} sellCrypto={sellCrypto} investmentValue={investmentValue} cash={activeUser.cash}/>
