@@ -45,12 +45,12 @@ const StocksBox = () => {
     }
 
  
-    const addCrypto = ((item, amount) => {
+    const addCrypto = ((item, amount, cost) => {
         const newPortfolio = [... activeUser.portfolio]
         const newCoinObj = {coin:item, investment: amount, coin_amount: coinAmount(item, amount)}
         newPortfolio.push(newCoinObj);
         setUserPortfolio(newPortfolio);
-        setCashWallet(activeUser.cash - amount)
+        setCashWallet(activeUser.cash - cost)
         //adds crypto to user database and portfolio 
     })
 
@@ -81,10 +81,7 @@ const StocksBox = () => {
     })
 
     const addMysteryCoin = ((item) => {
-        const newPortfolio = [... activeUser.portfolio] 
-        const newCoinObj = {coin:item, investment:5000}
-        newPortfolio.push(newCoinObj);
-        setUserPortfolio(newPortfolio);
+        addCrypto(item, 5000, 0)
     })
 
 
