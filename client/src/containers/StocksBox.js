@@ -15,6 +15,7 @@ const StocksBox = () => {
     const [investmentValue, setInvestmentValue] = useState(false)
     const [selectedCurrency, setSelectedCurrency] = useState(null)
     const [message, updateMessage] = useState(null)
+    const [searchTerm, setSearchTerm] = useState(''); // Saves the current search field in search box
     
     const first = useRef(true);
 
@@ -69,6 +70,8 @@ const StocksBox = () => {
     })
 
     const handleMysteryCoin = ((array) => {
+        if (activeUser.cash >= 2000) { // Check user has funds to play the game
+
         const randomCoin = array[Math.floor(Math.random() * array.length)]
         if (randomCoin.name === selectedCurrency.name) {
             addMysteryCoin(randomCoin)
@@ -78,6 +81,16 @@ const StocksBox = () => {
             setCashWallet(activeUser.cash - 2000)
             updateMessage(`Sorry the mystery coin was ${randomCoin.name}.`)
         }
+
+        } else {
+
+            updateMessage("Sorry, you do not have sufficent funds to play our wonderful game!")
+        }
+        
+        
+        
+        // end of if activeUser.cash > 2000
+
     })
 
     const addMysteryCoin = ((item) => {
@@ -118,6 +131,10 @@ const StocksBox = () => {
     // creates the updated user object and pushes is to the database
      
 
+        // This function updates the useState searchTerm with the text in the search box
+        const searchCryptos = (searchTerm) => {
+            setSearchTerm(searchTerm); // Update searchTerm useState
+        };
 
     return (
         <>
@@ -125,7 +142,7 @@ const StocksBox = () => {
             <CurrencySelector cryptos={cryptos} onCurrencySelect={onCurrencySelect} handleMysteryCoin={handleMysteryCoin}/>
             {message}
             <PortfolioList portfolio={activeUser.portfolio} sellCrypto={sellCrypto} investmentValue={investmentValue}/>
-            <StocksList cryptos={cryptos} addCrypto={addCrypto} cash={activeUser.cash}/>
+            <StocksList cryptos={cryptos} addCrypto={addCrypto} cash={activeUser.cash} searchCryptos={searchCryptos} searchTerm={searchTerm}/>
         </>
     )
 } 
