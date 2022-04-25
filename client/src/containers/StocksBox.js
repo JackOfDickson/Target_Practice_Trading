@@ -4,6 +4,7 @@ import StocksList from "../components/StocksList"
 import PortfolioList from "../components/PortfolioList";
 import { getUsers, updateServer } from "../components/ServerService";
 import { calculateIncrease } from "../components/Calculator";
+import CurrencySelector from "../components/Currency Selector";
 
 const StocksBox = () => {
 
@@ -12,6 +13,8 @@ const StocksBox = () => {
     const [userPortfolio, setUserPortfolio] = useState([]);
     const [cashWallet, setCashWallet] = useState(0)
     const [investmentValue, setInvestmentValue] = useState(false)
+    const [selectedCurrency, setSelectedCurrency] = useState(null)
+    const [message, updateMessage] = useState(null)
     
     const first = useRef(true);
 
@@ -42,12 +45,12 @@ const StocksBox = () => {
     }
 
  
-    const addCrypto = ((item, amount) => {
+    const addCrypto = ((item, amount, cost) => {
         const newPortfolio = [... activeUser.portfolio]
         const newCoinObj = {coin:item, investment: amount, coin_amount: coinAmount(item, amount)}
         newPortfolio.push(newCoinObj);
         setUserPortfolio(newPortfolio);
-        setCashWallet(activeUser.cash - amount)
+        setCashWallet(activeUser.cash - cost)
         //adds crypto to user database and portfolio 
     })
 
@@ -61,7 +64,26 @@ const StocksBox = () => {
         // sell crypto and update database
     })
 
-    
+    const onCurrencySelect = ((currency) => {
+        setSelectedCurrency(currency);
+    })
+
+    const handleMysteryCoin = ((array) => {
+        const randomCoin = array[Math.floor(Math.random() * array.length)]
+        if (randomCoin.name === selectedCurrency.name) {
+            addMysteryCoin(randomCoin)
+            updateMessage("Congratulations!")
+        }  
+        else {
+            setCashWallet(activeUser.cash - 2000)
+            updateMessage(`Sorry the mystery coin was ${randomCoin.name}.`)
+        }
+    })
+
+    const addMysteryCoin = ((item) => {
+        addCrypto(item, 5000, 0)
+    })
+
 
 
     useEffect( ()=>
@@ -69,7 +91,7 @@ const StocksBox = () => {
         createUpdate();
         
 
-    },[userPortfolio])
+    },[userPortfolio, cashWallet])
     // calls the create update every time the user buys or sells crypto to push to database
 
 
@@ -100,6 +122,8 @@ const StocksBox = () => {
     return (
         <>
             <UserStats cash={activeUser.cash}/>
+            <CurrencySelector cryptos={cryptos} onCurrencySelect={onCurrencySelect} handleMysteryCoin={handleMysteryCoin}/>
+            {message}
             <PortfolioList portfolio={activeUser.portfolio} sellCrypto={sellCrypto} investmentValue={investmentValue}/>
             <StocksList cryptos={cryptos} addCrypto={addCrypto} cash={activeUser.cash}/>
         </>
