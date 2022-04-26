@@ -75,7 +75,7 @@ const StocksBox = () => {
         .then((re)=> setActiveUser(re))
     }, [fetchUser])
 
-   
+
     
         
     // Takes in crypto purchased and investment amount

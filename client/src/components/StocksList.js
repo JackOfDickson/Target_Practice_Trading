@@ -1,5 +1,6 @@
 import Stock from "./Stock"
 import MoversShakers from './MoversShakers'
+import Analysis from "./analysis"
 
 const StocksList = ({cryptos, addCrypto, cash, searchCryptos, searchTerm}) => {
 
@@ -29,6 +30,8 @@ const StocksList = ({cryptos, addCrypto, cash, searchCryptos, searchTerm}) => {
             <p>Check out the latest price of the top 100 cryptocurrencies and add them to your portfolio.</p>
 
 	     	<MoversShakers cryptos={cryptos}/>
+
+            {/* <Analysis /> */}
 
              <h3>Cryptocurrencies <i class="fa-solid fa-list"></i></h3>
 
