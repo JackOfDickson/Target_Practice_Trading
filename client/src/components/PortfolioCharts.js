@@ -26,8 +26,9 @@ const PortfolioCharts = ({portfolio, cash}) => {
                 height="400px"
                 options={{
                     backgroundColor: {
-                        fill: 'none'}}}
-                    
+                        fill: 'none'},
+                    labelStyle: {
+                        fill: 'white'}}}
                 legendToggle
                 
                 

@@ -3,16 +3,31 @@
 
 /* ------ USER STATS SECTION ------ */
 
+.three {
+	background: linear-gradient(to right, black, #4579ff);
+	font-family: 'Source Sans Pro', sans-serif;
+}
+
 #user-stats-box {
     display:flex;
     flex-direction: row;
     margin:auto;
 }
 
-.left, .right {flex:50%;padding:10px; }
-.left p, .right p {padding:10px;font-weight: 700;color:black; box-shadow: 5px 5px black;}
-.left p {background-color: #e6f8eb;}
-.right p {background-color: #cde5f3;}
+#chart text {
+    fill: white;
+}
+
+.chart-p {
+	color: white;
+	text-align: center;
+}
+
+
+.left, .right {flex:50%;padding: 1px 20px;}
+.left p, .right p {padding:5px;color:black; box-shadow: 2px 2px #444; font-weight:bolder;}
+.left p {background-color: #4579ff; border-radius: 10px; color: white;}
+.right p {background-color: #4579ff; border-radius: 10px; color: white;}
 .bestPercentage {float:right;color:green;}
 .worstPercentage {float:right;color:red;}
 
@@ -170,7 +185,7 @@
 }
 
 .port-title {
-	color: #888; 
+	color: #white; 
 }
 
 .portfolio-item:hover {
@@ -301,7 +316,7 @@ input, select, textarea {
 
 	h1, h2, h3, h4, h5, h6 {
 		font-weight: 300;
-		color: #666;
+		color: white;
 		line-height: 1.5em;
 	}
 
@@ -2480,8 +2495,7 @@ input, select, textarea {
 				background-color: linear-gradient(to right, #4579ff black);
 			}
 
-			#main > section.three {
-			}
+			
 
 			#main > section.four {
 			}

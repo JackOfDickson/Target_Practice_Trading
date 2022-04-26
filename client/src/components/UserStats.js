@@ -97,12 +97,27 @@ for (let i = 0; i < investmentArray.length; ++i) { // Run through each item in i
 
 
     const options = {
-        title: "Value of Invested Cryptos in USD",
         width: 900,
         height: 400,
         bar: { groupWidth: "95%" },
         legend: { position: "none" },
+        backgroundColor: {
+            fill: 'none'},
+        hAxis: {
+            textStyle: {
+                color: "white"
+        }},
+            vAxis: {
+                textStyle: {
+                    color: '#ffffff'
+                
+            },
+        },
+       
         };
+
+        
+
 
     // End of chart data building section
 
@@ -114,15 +129,15 @@ for (let i = 0; i < investmentArray.length; ++i) { // Run through each item in i
             <header>
                 <h2>User Stats <i class="fa-solid fa-chart-column"></i></h2>
             </header>
-
-            <Chart
+            <p class="chart-p">Value of Invested Cryptos in USD</p>
+           <div><Chart
                 chartType="BarChart"
                 width="100%"
                 height="400px"
                 data={data}
                 options={options}
-            />
-
+            /></div> 
+            <br></br>
             <div id="user-stats-box">
                 <div className="left">
                     <p>Initial Investment: $10,000</p>
@@ -137,6 +152,7 @@ for (let i = 0; i < investmentArray.length; ++i) { // Run through each item in i
                 <p>Crypto Value: {investmentPortfolio}</p>
 
                 </div>
+                
             </div>
 
         </div>
