@@ -26,7 +26,7 @@ const Header = ({handleLogOut}) => {
                         <ul>
                             <li><a href="#top" id="top-link"><span className="icon solid fa-home">Intro</span></a></li>
                             <li><a href="#how-to-play" id="play-link"><span className="icon solid fa-gamepad">How to Play</span></a></li>
-                            <li><a href="#leaderboard" id="leaderboard"><span className="icon solid fa-table">League Table</span></a></li>
+                            <li><a href="#leaderboard2" id="leaderboard"><span className="icon solid fa-table">Leaderboard</span></a></li>
                             <li><a href="#user-stats" id="stats-link"><span className="icon solid fa-user">User Stats</span></a></li>
                             <li><a href="#portfolio" id="portfolio-link"><span className="icon solid fa-th">Portfolio</span></a></li>
                             <li><a href="#market" id="market-link"><span className="icon brands fa-bitcoin">Market</span></a></li>

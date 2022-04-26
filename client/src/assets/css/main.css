@@ -1,6 +1,37 @@
 @import url("fontawesome-all.min.css");
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400,600");
 
+/* ------ LEADER BOARD SECTION ------ */
+
+#leaderboard2 {
+	padding: 0 4em 2em 4em;
+	color: white;
+	background: linear-gradient(to right, black, #4579ff);
+}
+
+#leaderboard2 > ol > li {
+	padding: 20px;
+	font-size: 1.2em;
+	border: solid #adb5b8;
+	text-align: center;
+}
+
+.user {
+	color: rgb(255, 230, 44);
+}
+
+.leaderboard-title {
+	color: white;
+	text-align: center;
+	margin-bottom: 20px
+}
+
+.coin-image {
+	margin-bottom: -10px
+}
+
+/* ------ HOW TO PLAY SECTION ------ */
+
 #how-to-play {
 	background: linear-gradient(to right, black, #4579ff);
 	border: none;
@@ -15,9 +46,6 @@
 	color: white
 }
 
-.chart {
-	padding-left: 100px
-}
 
 /* ------ MYSTERY COIN SECTION ------ */
 
@@ -139,7 +167,9 @@
 
 }
 
-
+.chart {
+	padding-left: 100px
+}
 
 
 

@@ -19,7 +19,7 @@ const leaderBoard = sortRanks.map(rank=>
         if(rank.name === activeUser.name)
         {
 
-            return <li><strong >{rank.name}  ${rank.equity.toFixed(2)}<span>&#8592;</span></strong></li>
+            return <li><strong class="user">{rank.name}  ${rank.equity.toFixed(2)}<span>&#8592;</span></strong></li>
         }
         else
         {
@@ -30,7 +30,10 @@ const leaderBoard = sortRanks.map(rank=>
 
 
     return(
-        <div id="leaderboard">
+       
+
+        <div id="leaderboard2"> 
+        <h2 class="leaderboard-title"><img src={require("./css/bitcoin.gif")} height="60" class="coin-image"/>Leaderboard<img src={require("./css/bitcoin.gif")} height="70" class="coin-image"/></h2>
         <ol>
             {leaderBoard}
         </ol></div>
