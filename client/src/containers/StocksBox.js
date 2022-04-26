@@ -2,7 +2,7 @@ import React, {useEffect, useState, useRef} from "react"
 import UserStats from "../components/UserStats"
 import StocksList from "../components/StocksList"
 import PortfolioList from "../components/PortfolioList";
-import { getUsers, updateServer } from "../components/ServerService";
+import { getUsers, updateServer, getOneUser } from "../components/ServerService";
 import { calculateIncrease } from "../components/Calculator";
 import CurrencySelector from "../components/Currency Selector";
 import ReactModal from 'react-modal'
@@ -35,7 +35,7 @@ const StocksBox = () => {
         {
             const interval = setInterval(() => {
                 getCryptos()  
-            }, 10000);
+            }, 2000);
             return () => clearInterval(interval);
         }
     }, []); 
@@ -64,9 +64,15 @@ const StocksBox = () => {
 
     useEffect(()=>
     {
+        getOneUser(activeUser._id)
+        .then((re)=> setActiveUser(re))
+    }, [fetchUser])
+
+    useEffect(()=>
+    {
         getUsers()
         .then((re)=> setAllUsers(re))
-    }, [fetchUser])
+    })
     
         
     // Takes in crypto purchased and investment amount
