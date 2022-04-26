@@ -16,17 +16,32 @@ const StocksBox = () => {
     const [selectedCurrency, setSelectedCurrency] = useState(null) // Stores the currently selected crypto when playing mystery coin
     const [message, updateMessage] = useState(null) // Displays message to communicate result of mystery coin
     const [searchTerm, setSearchTerm] = useState(''); // Saves the current search field in search box
+    const [fetchUser, setFetchUser] = useState(false)
+    const [counter, setCounter] = useState(0)
     
     const first = useRef(true);
+    const activateDelay = useRef(false)
 
     useEffect(() => {
-        const interval = setInterval(() => {
+        if(activateDelay.current === false)
+        {
             getCryptos()
-        }, 60);
-        return () => clearInterval(interval);
-      }, []); 
+            activateDelay.current = true;
+        }
+        else
+        {
+            const interval = setInterval(() => {
+                getCryptos()  
+            }, 10000);
+            return () => clearInterval(interval);
+        }
+    }, []); 
       // fetches the API every 60 seconds to update live the market prices
-
+    
+    useEffect(()=>
+    {
+        setCounter(counter + 1)
+    }, [cryptos])
     
     // function to caluclate live value of crypto investment 
     // Only executes when a crypto is purchased, sold or won
@@ -42,6 +57,12 @@ const StocksBox = () => {
             setInvestmentValue(calculateIncrease(activeUser.portfolio, cryptos));
         }
         }, [cryptos])
+
+    useEffect(()=>
+    {
+        getUsers()
+        .then((re)=> setActiveUser(re[0]))
+    }, [fetchUser])
     
         
     // Takes in crypto purchased and investment amount
@@ -128,6 +149,7 @@ const StocksBox = () => {
              portfolio: userPortfolio
          }
          updateServer(updatedUser, activeUser._id)
+         setFetchUser(!fetchUser)
     }// creates the updated user object and pushes is to the database
      
 
