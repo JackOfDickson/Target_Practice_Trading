@@ -30,9 +30,10 @@ const leaderBoard = sortRanks.map(rank=>
 
 
     return(
+        <div id="leaderboard">
         <ol>
             {leaderBoard}
-        </ol>
+        </ol></div>
     )
 }
 

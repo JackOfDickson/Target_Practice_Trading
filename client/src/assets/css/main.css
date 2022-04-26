@@ -6,14 +6,17 @@
 	border: none;
 
 }
-
 .howToContainer {
-	padding: 0 8em 0 6em;
+	padding: 0 4em 0 4em;
 	color: white
 }
 
 .howToTitle {
 	color: white
+}
+
+.chart {
+	padding-left: 100px
 }
 
 /* ------ MYSTERY COIN SECTION ------ */
@@ -89,7 +92,7 @@
 
 #portfolio {
 	background: linear-gradient(to right, black, #4579ff);
-	padding: 20px;
+	padding: 20px 0px 10px 20px;
 }
 
 

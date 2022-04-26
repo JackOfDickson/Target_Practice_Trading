@@ -10,21 +10,29 @@ const PortfolioCharts = ({portfolio, cash}) => {
         const currentInvestment = [investment.coin.name, investment.investment]
         pieChart.push(currentInvestment)
     })
+
+  
+
+     
    
     
     return (
         <>
-            <p>Chart</p>
-
-            
-            <Chart
+           <div class="chart"><Chart
                 chartType="PieChart"
                 data={pieChart}
                 // options = "my investment"
                 width="100%"
                 height="400px"
+                options={{
+                    backgroundColor: {
+                        fill: 'none'}}}
+                    
                 legendToggle
-/>
+                
+                
+                
+/></div>
         </>
     )
 };
