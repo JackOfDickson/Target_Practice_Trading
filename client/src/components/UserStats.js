@@ -23,48 +23,79 @@ const UserStats = ({activeUser, investmentValue}) => {
         )
     });
 
-    // map investment portfolio
+    // Create investment array showing coin name and coin price
+
+    let investmentArray=[];
+    if (investmentValue) { // check to see if investments exist
+        investmentValue.map( crypto => {
+            const coinInfo={
+                name: crypto.coin, // name of crypto
+                price: crypto.sell_price // sell price of crypto
+            };
+            investmentArray.push(coinInfo);
+        });
+    } // end if
+
+
+// Function to combine current value of crypto purchases
+for (let i = 0; i < investmentArray.length; ++i) { // Run through each item in investmentArray
+   
+    for (let unique = 0; unique < investmentArray.length; unique++) { // Second for loop to find unique keys
+        
+        // if cryptocurrency is found when looping round the second time
+        if (i !== unique && investmentArray[i].name === investmentArray[unique].name) { 
+            investmentArray[i].price+=investmentArray[unique].price; // Add value to first listing of cryptocurrency
+            investmentArray.splice(unique, 1); // Remove duplicate entry from investmentArray
+        } // end if
+    } // end of second for loop
+} // end of first for loop
+
+
+// map investment portfolio for calculating value of crypto portfolio
     let investmentPortfolio;
     let investmentCalculation = 0;
 
-    if (investmentValue) { // check to see investments exist
+   if (investmentValue) { // check to see investments exist
 
-    investmentPortfolio = investmentValue.map( crypto => {
+    investmentPortfolio = investmentArray.map( crypto => {
 
-        investmentCalculation+=crypto.sell_price;
+        investmentCalculation+=crypto.price;
 
-        const formatSellPrice = parseFloat(crypto.sell_price).toFixed(2); // format sell price to two decimal places
-        const sellPrice = parseFloat(formatSellPrice).toLocaleString("en-US"); // Separate large numbers with commas
+       const formatSellPrice = parseFloat(crypto.price).toFixed(2); // format sell price to two decimal places
+       const sellPrice = parseFloat(formatSellPrice).toLocaleString("en-US"); // Separate large numbers with commas
 
 
         return (
             <>
-                <br />• {crypto.coin} investment is now worth ${sellPrice}
+                <br />• {crypto.name} investment is now worth ${sellPrice}
             </>
             )        
     });
 
     }  
+// End of mapping investment portfolio
 
-    // Calculation and formatting for cash and crypto balances
-    const formatInvestmentTotalValue = parseFloat(investmentCalculation).toFixed(2); // format sell price to two decimal places
-    const investmentTotalValue = parseFloat(formatInvestmentTotalValue).toLocaleString("en-US"); // Separate large numbers with commas
 
-    const workingBalance = parseFloat(activeUser.cash) + parseFloat(investmentCalculation); // Calculate total value of portfolio
-    const formatWorkingBalance = parseFloat(workingBalance).toFixed(2); // format sell price to two decimal places
-    const equityBalance = parseFloat(formatWorkingBalance).toLocaleString("en-US"); // Separate large numbers with commas
+   // Calculation and formatting for cash and crypto balances
+   const formatInvestmentTotalValue = parseFloat(investmentCalculation).toFixed(2); // format sell price to two decimal places
+   const investmentTotalValue = parseFloat(formatInvestmentTotalValue).toLocaleString("en-US"); // Separate large numbers with commas
 
+   const workingBalance = parseFloat(activeUser.cash) + parseFloat(investmentCalculation); // Calculate total value of portfolio
+   const formatWorkingBalance = parseFloat(workingBalance).toFixed(2); // format sell price to two decimal places
+   const equityBalance = parseFloat(formatWorkingBalance).toLocaleString("en-US"); // Separate large numbers with commas
+
+
+        
     // Data for User stats chart
 
     let data = [["Crypto", "USD Value"]];
-  
-    if (investmentValue) { // check to see investments exist
-        investmentValue.map( crypto => {
-            const coinInfo=[crypto.coin, crypto.sell_price];
-            data.push(coinInfo);
-        });
 
-    }
+    investmentArray.map( crypto => {
+        const coinInfo=[crypto.name, parseFloat(crypto.price)];
+        data.push(coinInfo);
+    });
+
+
     const options = {
         title: "Value of Invested Cryptos in USD",
         width: 900,
@@ -72,6 +103,8 @@ const UserStats = ({activeUser, investmentValue}) => {
         bar: { groupWidth: "95%" },
         legend: { position: "none" },
         };
+
+    // End of chart data building section
 
     return (
 
