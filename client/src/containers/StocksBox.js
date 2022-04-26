@@ -2,12 +2,13 @@ import React, {useEffect, useState, useRef} from "react"
 import UserStats from "../components/UserStats"
 import StocksList from "../components/StocksList"
 import PortfolioList from "../components/PortfolioList";
-import { getUsers, updateServer, getOneUser } from "../components/ServerService";
+import { getUsers, updateServer, getOneUser, saveUser } from "../components/ServerService";
 import { calculateIncrease } from "../components/Calculator";
 import CurrencySelector from "../components/Currency Selector";
 import ReactModal from 'react-modal'
 import Header from "../designComponents/Header";
 import Leaderboard from "../components/Leaderboard";
+import SignUpForm from "../components/SignUpForm";
 
 const StocksBox = () => {
 
@@ -22,6 +23,7 @@ const StocksBox = () => {
     const [searchTerm, setSearchTerm] = useState(''); // Saves the current search field in search box
     const [fetchUser, setFetchUser] = useState(false)
     const [isModalOpen, setIsModalOpen] = useState(true)
+    const [signUpModal, setSignUpModal] = useState(false)
     // const [counter, setCounter] = useState(0)//counter for testing purposes
     
     const first = useRef(true);
@@ -188,6 +190,23 @@ const StocksBox = () => {
         
     }
 
+    const handleSignUpClick=()=>
+    {
+        setSignUpModal(!signUpModal)
+        setIsModalOpen(!isModalOpen)
+    }
+
+    const registerUser = (name, email)=>
+    {
+        const createUser = {
+            name: name,
+             email: email,
+             cash: 10000,
+             portfolio: []
+        }
+        saveUser(createUser)
+    }
+
    
 
     return (
@@ -206,6 +225,13 @@ const StocksBox = () => {
                 </select>
                 <button type='submit'>Login</button>
                 </form>
+                <button onClick={handleSignUpClick}>Sign Up</button>
+              
+            </ReactModal>
+            <ReactModal
+                isOpen={signUpModal}
+                ariaHideApp={false}>
+                    <SignUpForm handleSignUpClick={handleSignUpClick} allUsers={allUsers} registerUser={registerUser}/>
             </ReactModal>
             <Leaderboard allUsers={allUsers} cryptos={cryptos} activeUser={activeUser}/>
             <Header handleLogOut={handleLogOut}/>

@@ -24,3 +24,13 @@ export const getOneUser = (id)=>
     return fetch(baseUrl + id)
     .then(re=> re.json());
 }
+
+export const saveUser = (data)=>
+{
+    return fetch(baseUrl,
+        {
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers: {'Content-Type': 'application/json'}
+        })
+}
