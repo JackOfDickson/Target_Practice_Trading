@@ -136,8 +136,6 @@ const StocksBox = () => {
         fetch ('https://api.coincap.io/v2/assets')            
         .then (response => response.json())            
         .then (result => setCryptos (result.data.slice(0,items)))
-        .then(()=> getUsers()
-        .then((re)=> setActiveUser(re[0])))
      }; // fetches API and users from database and update the corresponding states
 
 
