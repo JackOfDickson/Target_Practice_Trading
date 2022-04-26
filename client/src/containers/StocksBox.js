@@ -8,6 +8,8 @@ import CurrencySelector from "../components/Currency Selector";
 import ReactModal from 'react-modal'
 import Header from "../designComponents/Header";
 import Leaderboard from "../components/Leaderboard";
+import sound from '../components/sounds/win.mp3';
+import sound2 from '../components/sounds/loose.mp3';
 
 const StocksBox = () => {
 
@@ -109,6 +111,9 @@ const StocksBox = () => {
         setSelectedCurrency(currency);
     })
 
+    const winPlay = new Audio (sound);
+    const loosePlay = new Audio (sound2)
+
     // Mystery game function which determines whether the player wins or loses
     const handleMysteryCoin = ((array) => {
         if (activeUser.cash >= 2000) { // Check user has funds to play the game
@@ -117,15 +122,19 @@ const StocksBox = () => {
         if (randomCoin.name === selectedCurrency.name) {
             addMysteryCoin(randomCoin)
             updateMessage("Congratulations!")
+            winPlay.play()
+
         }  
         else {
             setCashWallet(activeUser.cash - 2000)
             updateMessage(`Sorry the mystery coin was ${randomCoin.name}.`)
+            loosePlay.play()
         }
 
         } else { // If user does not have sufficient funds to play the game
 
             updateMessage("Sorry, you do not have sufficent funds to gamble on our mystery coin!")
+            loosePlay.play()
         }
 
     })
@@ -218,3 +227,4 @@ const StocksBox = () => {
     )
 } 
 export default StocksBox
+

@@ -33,7 +33,7 @@ const leaderBoard = sortRanks.map(rank=>
        
 
         <div id="leaderboard2"> 
-        <h2 class="leaderboard-title"><img src={require("./css/bitcoin.gif")} height="60" class="coin-image"/>Leaderboard<img src={require("./css/bitcoin.gif")} height="70" class="coin-image"/></h2>
+        <h2 class="leaderboard-title"><img src={require("./css/bitcoin.gif")} height="60" class="coin-image"/>Leaderboard<img src={require("./css/bitcoin.gif")} height="60" class="coin-image"/></h2>
         <ol>
             {leaderBoard}
         </ol></div>

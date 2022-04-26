@@ -1,6 +1,21 @@
 @import url("fontawesome-all.min.css");
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400,600");
 
+/* ------ USER STATS SECTION ------ */
+
+#user-stats-box {
+    display:flex;
+    flex-direction: row;
+    margin:auto;
+}
+
+.left, .right {flex:50%;padding:10px; }
+.left p, .right p {padding:10px;font-weight: 700;color:black; box-shadow: 5px 5px black;}
+.left p {background-color: #e6f8eb;}
+.right p {background-color: #cde5f3;}
+.bestPercentage {float:right;color:green;}
+.worstPercentage {float:right;color:red;}
+
 /* ------ LEADER BOARD SECTION ------ */
 
 #leaderboard2 {
