@@ -56,15 +56,47 @@ const UserStats = ({activeUser, investmentValue}) => {
 
     // Data for User stats chart
 
-    let data = [["Crypto", "USD Value"]];
-  
-    if (investmentValue) { // check to see investments exist
-        investmentValue.map( crypto => {
-            const coinInfo=[crypto.coin, crypto.sell_price];
-            data.push(coinInfo);
-        });
+    // Create investment array showing coin name and coin price
 
+    let investmentArray=[];
+    if (investmentValue) { // check to see if investments exist
+        investmentValue.map( crypto => {
+            const coinInfo={
+                name: crypto.coin, 
+                price: crypto.sell_price 
+            };
+            investmentArray.push(coinInfo);
+        });
+    } // end if
+
+
+
+console.log(investmentArray)
+
+for (let i = 0; i < investmentArray.length; ++i) {
+   
+    for (let unique = 0; unique < investmentArray.length; unique++) {
+        
+        if (i !== unique && investmentArray[i].name === investmentArray[unique].name) {
+            investmentArray[i].price+=investmentArray[unique].price;
+            investmentArray.splice(unique, 1); 
     }
+        
+    }
+
+}
+        
+console.log(investmentArray);
+
+    let data = [["Crypto", "USD Value"]];
+
+    investmentArray.map( crypto => {
+        const coinInfo=[crypto.name, parseFloat(crypto.price)];
+        data.push(coinInfo);
+    });
+
+    console.log(data)
+
     const options = {
         title: "Value of Invested Cryptos in USD",
         width: 900,
