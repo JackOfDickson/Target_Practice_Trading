@@ -17,7 +17,10 @@ const PortfolioCharts = ({portfolio, cash}) => {
         });
     } // end if
 
-    // Function to combine current value of crypto purchases
+// Function to combine current value of crypto purchases
+// let portfolioLoop= [];
+// portfolioArray.map((x) => portfolioLoop.push(x)); 
+
 for (let i = 0; i < portfolioArray.length; ++i) { // Run through each item in investmentArray
    
     for (let unique = 0; unique < portfolioArray.length; unique++) { // Second for loop to find unique keys
@@ -26,6 +29,7 @@ for (let i = 0; i < portfolioArray.length; ++i) { // Run through each item in in
         if (i !== unique && portfolioArray[i].name === portfolioArray[unique].name) { 
             portfolioArray[i].investment+=portfolioArray[unique].investment; // Add value to first listing of cryptocurrency
             portfolioArray.splice(unique, 1); // Remove duplicate entry from investmentArray
+            unique--; // decrement index of second for loop
         } // end if
     } // end of second for loop
 } // end of first for loop

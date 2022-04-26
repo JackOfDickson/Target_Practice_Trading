@@ -46,6 +46,7 @@ for (let i = 0; i < investmentArray.length; ++i) { // Run through each item in i
         if (i !== unique && investmentArray[i].name === investmentArray[unique].name) { 
             investmentArray[i].price+=investmentArray[unique].price; // Add value to first listing of cryptocurrency
             investmentArray.splice(unique, 1); // Remove duplicate entry from investmentArray
+            unique--; // decrement index of second for loop
         } // end if
     } // end of second for loop
 } // end of first for loop
