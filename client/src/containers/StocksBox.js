@@ -2,31 +2,51 @@ import React, {useEffect, useState, useRef} from "react"
 import UserStats from "../components/UserStats"
 import StocksList from "../components/StocksList"
 import PortfolioList from "../components/PortfolioList";
-import { getUsers, updateServer } from "../components/ServerService";
+import { getUsers, updateServer, getOneUser } from "../components/ServerService";
 import { calculateIncrease } from "../components/Calculator";
 import CurrencySelector from "../components/Currency Selector";
+import ReactModal from 'react-modal'
+import Header from "../designComponents/Header";
 
 const StocksBox = () => {
 
     const [cryptos, setCryptos] = useState([]); // Saves all cryptos from API into useState
     const [activeUser, setActiveUser] = useState({portfolio: []}) // useState for the active user
+    const [allUsers, setAllUsers] = useState([])
     const [userPortfolio, setUserPortfolio] = useState([]); // Used to trigger useEffect calls
     const [cashWallet, setCashWallet] = useState(0) // Stores the balance for user after transaction
     const [investmentValue, setInvestmentValue] = useState(false) // Current/Live value of crypto investment in US Dollars
     const [selectedCurrency, setSelectedCurrency] = useState(null) // Stores the currently selected crypto when playing mystery coin
     const [message, updateMessage] = useState(null) // Displays message to communicate result of mystery coin
     const [searchTerm, setSearchTerm] = useState(''); // Saves the current search field in search box
+    const [fetchUser, setFetchUser] = useState(false)
+    const [isModalOpen, setIsModalOpen] = useState(true)
+    // const [counter, setCounter] = useState(0)//counter for testing purposes
     
     const first = useRef(true);
+    const activateDelay = useRef(false)
 
     useEffect(() => {
-        const interval = setInterval(() => {
+        if(activateDelay.current === false)
+        {
             getCryptos()
-        }, 60);
-        return () => clearInterval(interval);
-      }, []); 
-      // fetches the API every 60 seconds to update live the market prices
-
+            activateDelay.current = true;
+        }
+        else
+        {
+            const interval = setInterval(() => {
+                getCryptos()  
+            }, 2000);
+            return () => clearInterval(interval);
+        }
+    }, []); 
+      // fetches the API every 10 seconds to update live the market prices
+    
+    // code below is for testing purposes, to see how many times the api data was fetched.
+    // useEffect(()=>
+    // {
+    //     setCounter(counter + 1)
+    // }, [cryptos])
     
     // function to caluclate live value of crypto investment 
     // Only executes when a crypto is purchased, sold or won
@@ -42,6 +62,18 @@ const StocksBox = () => {
             setInvestmentValue(calculateIncrease(activeUser.portfolio, cryptos));
         }
         }, [cryptos])
+
+    useEffect(()=>
+    {
+        getOneUser(activeUser._id)
+        .then((re)=> setActiveUser(re))
+    }, [fetchUser])
+
+    useEffect(()=>
+    {
+        getUsers()
+        .then((re)=> setAllUsers(re))
+    })
     
         
     // Takes in crypto purchased and investment amount
@@ -91,7 +123,7 @@ const StocksBox = () => {
 
         } else { // If user does not have sufficient funds to play the game
 
-            updateMessage("Sorry, you do not have sufficent funds to play our wonderful game!")
+            updateMessage("Sorry, you do not have sufficent funds to gamble on our mystery coin!")
         }
 
     })
@@ -114,8 +146,6 @@ const StocksBox = () => {
         fetch ('https://api.coincap.io/v2/assets')            
         .then (response => response.json())            
         .then (result => setCryptos (result.data.slice(0,items)))
-        .then(()=> getUsers()
-        .then((re)=> setActiveUser(re[0])))
      }; // fetches API and users from database and update the corresponding states
 
 
@@ -128,6 +158,7 @@ const StocksBox = () => {
              portfolio: userPortfolio
          }
          updateServer(updatedUser, activeUser._id)
+         setFetchUser(!fetchUser)
     }// creates the updated user object and pushes is to the database
      
 
@@ -136,14 +167,51 @@ const StocksBox = () => {
             setSearchTerm(searchTerm); // Update searchTerm useState
         };
 
+    const users = allUsers.map((user, index)=>
+        {
+           return  <option value={index} key={index}>{user.name}</option>
+        })
+
+    const handleLogin = (event)=>
+    {
+        
+        setIsModalOpen(!isModalOpen)
+        setActiveUser(allUsers[event.target.user.value])
+        console.log(event)
+    }
+
+    const handleLogOut = ()=>
+    {
+        setIsModalOpen(!isModalOpen)
+        
+    }
+
+   
+
     return (
         <>
-            <UserStats activeUser={activeUser} investmentValue={investmentValue}/>
-            <CurrencySelector cryptos={cryptos} onCurrencySelect={onCurrencySelect} handleMysteryCoin={handleMysteryCoin}/>
-            {message}
-            <PortfolioList portfolio={activeUser.portfolio} sellCrypto={sellCrypto} investmentValue={investmentValue} cash={activeUser.cash}/>
+            <ReactModal
+            isOpen={isModalOpen}
+            ariaHideApp={false}
+
+            >
+                <h2>Welcome to Target Practice Trading</h2>
+                <form onSubmit={handleLogin}>
+                <label for='user'>Select User</label>
+                <select name='user'id='user' required>
+                    <option>Select User</option>
+                    {users}
+                </select>
+                <button type='submit'>Login</button>
+                </form>
+            </ReactModal>
+            <Header handleLogOut={handleLogOut}/>
+            <UserStats activeUser={activeUser} investmentValue={investmentValue}/> 
+            <div class='portfolio-container'><PortfolioList portfolio={activeUser.portfolio} sellCrypto={sellCrypto} investmentValue={investmentValue} cash={activeUser.cash}/></div>
+            
             <StocksList cryptos={cryptos} addCrypto={addCrypto} cash={activeUser.cash} searchCryptos={searchCryptos} searchTerm={searchTerm}/>
-        </>
+            <CurrencySelector cryptos={cryptos} onCurrencySelect={onCurrencySelect} handleMysteryCoin={handleMysteryCoin} message={message}/>
+            </>
     )
 } 
 export default StocksBox

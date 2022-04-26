@@ -1,29 +1,51 @@
 import { Chart } from "react-google-charts"
 
+
 const PortfolioCharts = ({portfolio, cash}) => {
 
+    // Create investment array showing coin name and coin price
 
-    
-    // const totalInvested= portfolio.reduce((previous, current) => previous + current.investment, 0 );
+    let portfolioArray=[];
+    if (portfolio) { // check to see if investments exist
 
-    // const totalEquity = totalInvested + cash;
+        portfolio.map( crypto => {
+            const coinInfo={
+                name: crypto.coin.name, // name of crypto
+                investment: crypto.investment // investment value of crypto
+            };
+            portfolioArray.push(coinInfo);
+        });
+    } // end if
 
-    const pieChartData = [["Coin", "Cash invest"], ["Cash USD", cash]];
+// Function to combine current value of crypto purchases
+// let portfolioLoop= [];
+// portfolioArray.map((x) => portfolioLoop.push(x)); 
 
-    portfolio.map(investment => {
-        const currentInvestment = [investment.coin.name, investment.investment]
-        pieChartData.push(currentInvestment)
+for (let i = 0; i < portfolioArray.length; ++i) { // Run through each item in investmentArray
+   
+    for (let unique = 0; unique < portfolioArray.length; unique++) { // Second for loop to find unique keys
+        
+        // if cryptocurrency is found when looping round the second time
+        if (i !== unique && portfolioArray[i].name === portfolioArray[unique].name) { 
+            portfolioArray[i].investment+=portfolioArray[unique].investment; // Add value to first listing of cryptocurrency
+            portfolioArray.splice(unique, 1); // Remove duplicate entry from investmentArray
+            unique--; // decrement index of second for loop
+        } // end if
+    } // end of second for loop
+} // end of first for loop
+
+    const pieChart = [["Coin", "Cash Invested"], ["Cash USD", cash]];
+
+    portfolioArray.map(investment => {
+        const currentInvestment = [investment.name, investment.investment]
+        pieChart.push(currentInvestment)
     })
-
-
+    
     return (
         <>
-            <p>Chart</p>
-
-            
             <Chart
                 chartType="PieChart"
-                data={pieChartData}
+                data={pieChart}
                 // options = "my investment"
                 width="100%"
                 height="400px"
@@ -32,4 +54,4 @@ const PortfolioCharts = ({portfolio, cash}) => {
         </>
     )
 };
-export default PortfolioCharts
+export default PortfolioCharts;
