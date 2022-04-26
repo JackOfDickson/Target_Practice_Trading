@@ -17,7 +17,7 @@ const StocksBox = () => {
     const [message, updateMessage] = useState(null) // Displays message to communicate result of mystery coin
     const [searchTerm, setSearchTerm] = useState(''); // Saves the current search field in search box
     const [fetchUser, setFetchUser] = useState(false)
-    const [counter, setCounter] = useState(0)
+    // const [counter, setCounter] = useState(0)//counter for testing purposes
     
     const first = useRef(true);
     const activateDelay = useRef(false)
@@ -36,12 +36,13 @@ const StocksBox = () => {
             return () => clearInterval(interval);
         }
     }, []); 
-      // fetches the API every 60 seconds to update live the market prices
+      // fetches the API every 10 seconds to update live the market prices
     
-    useEffect(()=>
-    {
-        setCounter(counter + 1)
-    }, [cryptos])
+    // code below is for testing purposes, to see how many times the api data was fetched.
+    // useEffect(()=>
+    // {
+    //     setCounter(counter + 1)
+    // }, [cryptos])
     
     // function to caluclate live value of crypto investment 
     // Only executes when a crypto is purchased, sold or won
