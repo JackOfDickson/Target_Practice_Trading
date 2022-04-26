@@ -1,5 +1,6 @@
 import React from "react";
-import './css/MoversShakers.css'
+import './css/MoversShakers.css';
+import { Chart } from "react-google-charts";
 
 const MoversShakers = ({cryptos}) => {
 
@@ -45,13 +46,20 @@ const MoversShakers = ({cryptos}) => {
             )
         })
 
- 
+    // Build Chart Data
+
+    let data = [["Cryptocurrency", "% Change in 24 Hours"]];
+
+        cryptos.map( crypto => {
+            const coinInfo=[crypto.name, parseFloat(crypto.changePercent24Hr)];
+            data.push(coinInfo);
+        });
 
     return (
         <div id="movers-shakers">
-            <h3>Movers & Shakers</h3>
+            <h3>Movers & Shakers <i class="fa-solid fa-thumbs-up"></i> <i class="fa-solid fa-thumbs-down"></i></h3>
             <p>Check out the biggest shifts in the market over the last 24 hours.</p>
-            
+            <Chart chartType="ColumnChart" width="100%" height="400px" data={data} />
             <div id="movers-shakers-box">
                 <div className="best">{bestCryptosList}</div>
                 <div className="worst">{worstCryptosList}</div>
