@@ -105,6 +105,23 @@ for (let i = 0; i < investmentArray.length; ++i) { // Run through each item in i
         legend: { position: "none" },
         };
 
+    let cryptoChart;
+    if (investmentArray !=false) {
+
+        cryptoChart =<Chart
+        chartType="BarChart"
+        width="100%"
+        height="400px"
+        data={data}
+        options={options}
+    />
+
+    } else {
+
+
+
+    }
+
     // End of chart data building section
 
     return (
@@ -116,13 +133,7 @@ for (let i = 0; i < investmentArray.length; ++i) { // Run through each item in i
                 <h2>User Stats <i class="fa-solid fa-chart-column"></i></h2>
             </header>
 
-            <Chart
-                chartType="BarChart"
-                width="100%"
-                height="400px"
-                data={data}
-                options={options}
-            />
+            {cryptoChart}
 
             <div id="user-stats-box">
                 <div className="left">
