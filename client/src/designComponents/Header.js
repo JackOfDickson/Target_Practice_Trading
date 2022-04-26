@@ -18,7 +18,6 @@ const Header = ({handleLogOut}) => {
                     <div id="logo">
                         <img src={require('../images/TARGET-PRACTICE.png')} alt="" width="200"/>
                         <h1 id="title"></h1>
-                        <p></p>
                     </div>
                 {/* End of Logo */}
 
@@ -30,9 +29,8 @@ const Header = ({handleLogOut}) => {
                             <li><a href="#user-stats" id="stats-link"><span className="icon solid fa-user">User Stats</span></a></li>
                             <li><a href="#portfolio" id="portfolio-link"><span className="icon solid fa-th">Portfolio</span></a></li>
                             <li><a href="#market" id="market-link"><span className="icon brands fa-bitcoin">Market</span></a></li>
-
                             <li><a href="#mystery-coin" id="mystery-coin-link"><span class="icon solid fa-circle-question">Mystery Coin</span></a></li>
-
+                            <br></br>
                             <li><button  onClick={handleClick}>Logout</button></li>
                         </ul>
                     </nav>

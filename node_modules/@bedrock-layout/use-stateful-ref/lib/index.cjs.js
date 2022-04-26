@@ -1,0 +1,1 @@
+"use strict";var n=require("react");function a(t){return t&&typeof t=="object"&&"default"in t?t:{default:t}}var c=a(n);function s(t=null){let[e,f]=c.default.useState(t);const{current:u}=c.default.useRef({current:e});return Object.defineProperty(u,"current",{get:()=>e,set:r=>{Object.is(e,r)||(e=r,f(r))}}),u}module.exports=s;

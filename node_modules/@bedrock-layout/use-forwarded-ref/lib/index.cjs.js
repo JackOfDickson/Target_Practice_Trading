@@ -1,0 +1,1 @@
+"use strict";var r=require("@bedrock-layout/use-stateful-ref"),f=require("react");function u(e){return e&&typeof e=="object"&&"default"in e?e:{default:e}}var n=u(r),a=u(f);function c(e){const t=n.default(null);return a.default.useEffect(()=>{!e||(typeof e=="function"?e(t.current):e.current=t.current)}),t}module.exports=c;
