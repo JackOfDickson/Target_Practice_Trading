@@ -79,7 +79,7 @@ const UserStats = ({activeUser, investmentValue}) => {
         <div className="container">
 
             <header>
-                <h2>User Stats</h2>
+                <h2>User Stats <i class="fa-solid fa-chart-column"></i></h2>
             </header>
 
             <Chart

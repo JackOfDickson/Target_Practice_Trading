@@ -57,7 +57,7 @@ const MoversShakers = ({cryptos}) => {
 
     return (
         <div id="movers-shakers">
-            <h3>Movers & Shakers</h3>
+            <h3>Movers & Shakers <i class="fa-solid fa-thumbs-up"></i> <i class="fa-solid fa-thumbs-down"></i></h3>
             <p>Check out the biggest shifts in the market over the last 24 hours.</p>
             <Chart chartType="ColumnChart" width="100%" height="400px" data={data} />
             <div id="movers-shakers-box">
