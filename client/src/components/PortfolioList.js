@@ -34,7 +34,7 @@ const PortfolioList = ({portfolio, sellCrypto, investmentValue, cash})=>
                 <h2>Portfolio</h2>
             </header>
         <div className="portfolio-box">{portfolioNodes}</div>
-        {/* <PortfolioCharts portfolio={portfolio} cash={cash}/> */}
+        <PortfolioCharts portfolio={portfolio} cash={cash}/>
         
         </div>
         </section>
