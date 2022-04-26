@@ -1,25 +1,26 @@
 import React from "react";
 import PortfolioItem from "./PortfolioItem";
+import PortfolioCharts from "./PortfolioCharts";
 
-const PortfolioList = ({portfolio, sellCrypto, investmentValue})=>
+const PortfolioList = ({portfolio, sellCrypto, investmentValue, cash})=>
 {
     const portfolioNodes = portfolio.map((coin, index) => {
         if (investmentValue)
         {
           
             const currentValue = investmentValue.find(cry=> cry.coin === coin.coin.name)
-
-            return (
-            <PortfolioItem coin={coin} index={index} key={index} sellCrypto={sellCrypto} liveUpdate={currentValue.sell_price}/>
-            )}
+            if(currentValue){
+                return (
+                <PortfolioItem coin={coin} index={index} key={index} sellCrypto={sellCrypto} liveUpdate={currentValue.sell_price}/>
+                )  }
+            else{
+               return ( <PortfolioItem coin={coin} index={index} key={index} sellCrypto={sellCrypto}/> )
+                 }
+        }
         
         else{
-        
-           
-
             return (
             <PortfolioItem coin={coin} index={index} key={index} sellCrypto={sellCrypto} />
-            
         )
         }
     })
@@ -33,6 +34,8 @@ const PortfolioList = ({portfolio, sellCrypto, investmentValue})=>
                 <h2>Portfolio</h2>
             </header>
         {portfolioNodes}
+        <PortfolioCharts portfolio={portfolio} cash={cash}/>
+        
         </div>
         </section>
         
@@ -40,3 +43,11 @@ const PortfolioList = ({portfolio, sellCrypto, investmentValue})=>
 }
 
 export default PortfolioList
+
+
+
+
+
+
+
+
