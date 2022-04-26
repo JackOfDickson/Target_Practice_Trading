@@ -1,6 +1,11 @@
 import react from "react";
 
-const Header = () => {
+const Header = ({handleLogOut}) => {
+
+    const handleClick = ()=>
+    {
+        handleLogOut();
+    }
 
     return  (
         <>
@@ -26,6 +31,7 @@ const Header = () => {
                             <li><a href="#portfolio" id="portfolio-link"><span className="icon solid fa-th">Portfolio</span></a></li>
                             <li><a href="#market" id="market-link"><span className="icon brands fa-bitcoin">Market</span></a></li>
                             <li><a href="#mystery-coin" id="mystery-coin-link"><span className="icon brands fa-magnifying-glass-dollar">Mystery Coin</span></a></li>
+                            <li><button  onClick={handleClick}>Logout</button></li>
                         </ul>
                     </nav>
                 {/*  End of Nav */}
