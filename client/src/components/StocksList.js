@@ -24,12 +24,18 @@ const StocksList = ({cryptos, addCrypto, cash, searchCryptos, searchTerm}) => {
             <div class="container">
 
                 <header>
-                    <h2>Market</h2>
+                    <h2>Cryptocurrency Market <i class="fa-brands fa-bitcoin"></i></h2>
                 </header>
+            <p>Check out the latest price of the top 100 cryptocurrencies and add them to your portfolio.</p>
+
 	     	<MoversShakers cryptos={cryptos}/>
 
-             <input onChange={handleSearch} type="search" id="search" name="search" placeholder="Search Cryptos" />
+             <h3>Cryptocurrencies <i class="fa-solid fa-list"></i></h3>
 
+             <p>A list of the top 100 cryptocurrencies available for purchase. Please use the search box below to filter results.</p>
+
+             <input onChange={handleSearch} type="search" id="search" name="search" placeholder="Search Cryptos" />
+            <p></p>
                 <table>
                     {cryptoList}
                 </table>
