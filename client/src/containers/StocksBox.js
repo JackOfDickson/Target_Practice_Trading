@@ -7,6 +7,7 @@ import { calculateIncrease } from "../components/Calculator";
 import CurrencySelector from "../components/Currency Selector";
 import ReactModal from 'react-modal'
 import Header from "../designComponents/Header";
+import Leaderboard from "../components/Leaderboard";
 
 const StocksBox = () => {
 
@@ -36,7 +37,7 @@ const StocksBox = () => {
         {
             const interval = setInterval(() => {
                 getCryptos()  
-            }, 2000);
+            }, 5000);
             return () => clearInterval(interval);
         }
     }, []); 
@@ -50,6 +51,11 @@ const StocksBox = () => {
     
     // function to caluclate live value of crypto investment 
     // Only executes when a crypto is purchased, sold or won
+    useEffect(()=>
+    {
+        getUsers()
+        .then((re)=> setAllUsers(re))
+    }, [cryptos])
     useEffect(()=>
     {
         if (first.current)
@@ -69,11 +75,7 @@ const StocksBox = () => {
         .then((re)=> setActiveUser(re))
     }, [fetchUser])
 
-    useEffect(()=>
-    {
-        getUsers()
-        .then((re)=> setAllUsers(re))
-    })
+   
     
         
     // Takes in crypto purchased and investment amount
@@ -205,6 +207,7 @@ const StocksBox = () => {
                 <button type='submit'>Login</button>
                 </form>
             </ReactModal>
+            <Leaderboard allUsers={allUsers} cryptos={cryptos}/>
             <Header handleLogOut={handleLogOut}/>
             <UserStats activeUser={activeUser} investmentValue={investmentValue}/> 
             <div class='portfolio-container'><PortfolioList portfolio={activeUser.portfolio} sellCrypto={sellCrypto} investmentValue={investmentValue} cash={activeUser.cash}/></div>
