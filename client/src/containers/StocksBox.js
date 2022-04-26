@@ -207,7 +207,7 @@ const StocksBox = () => {
                 <button type='submit'>Login</button>
                 </form>
             </ReactModal>
-            <Leaderboard allUsers={allUsers} cryptos={cryptos}/>
+            <Leaderboard allUsers={allUsers} cryptos={cryptos} activeUser={activeUser}/>
             <Header handleLogOut={handleLogOut}/>
             <UserStats activeUser={activeUser} investmentValue={investmentValue}/> 
             <div class='portfolio-container'><PortfolioList portfolio={activeUser.portfolio} sellCrypto={sellCrypto} investmentValue={investmentValue} cash={activeUser.cash}/></div>
