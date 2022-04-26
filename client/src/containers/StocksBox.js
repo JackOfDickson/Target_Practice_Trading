@@ -91,7 +91,7 @@ const StocksBox = () => {
 
         } else { // If user does not have sufficient funds to play the game
 
-            updateMessage("Sorry, you do not have sufficent funds to play our wonderful game!")
+            updateMessage("Sorry, you do not have sufficent funds to gamble on our mystery coin!")
         }
 
     })
@@ -138,12 +138,12 @@ const StocksBox = () => {
 
     return (
         <>
-            <UserStats activeUser={activeUser} investmentValue={investmentValue}/>
-            <CurrencySelector cryptos={cryptos} onCurrencySelect={onCurrencySelect} handleMysteryCoin={handleMysteryCoin}/>
-            {message}
-            <PortfolioList portfolio={activeUser.portfolio} sellCrypto={sellCrypto} investmentValue={investmentValue} cash={activeUser.cash}/>
+            <UserStats activeUser={activeUser} investmentValue={investmentValue}/> 
+            <div class='portfolio-container'><PortfolioList portfolio={activeUser.portfolio} sellCrypto={sellCrypto} investmentValue={investmentValue} cash={activeUser.cash}/></div>
+            
             <StocksList cryptos={cryptos} addCrypto={addCrypto} cash={activeUser.cash} searchCryptos={searchCryptos} searchTerm={searchTerm}/>
-        </>
+            <CurrencySelector cryptos={cryptos} onCurrencySelect={onCurrencySelect} handleMysteryCoin={handleMysteryCoin} message={message}/>
+            </>
     )
 } 
 export default StocksBox
