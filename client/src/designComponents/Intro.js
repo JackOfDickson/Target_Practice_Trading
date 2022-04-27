@@ -10,12 +10,11 @@ const Intro = () => {
                     <div></div>
                     <div class="target-image"><img src={require("../images/target2.png")} height="400px"></img></div>
                     <h2 class="h2">Are You an Expert Trader? </h2>
-                    <p>Test your investment skills against friends, family and fellow investors, <br />
-                        in the ultimate crypto trading game!</p>
+                    <p>Test your investment skills against friends, family and fellow investors, in the ultimate crypto trading game!</p>
                 </header>
 
                 <footer>
-                    <a href="#portfolio" class="button scrolly">START NOW</a>
+                    <a href="#market"  class="button scrolly">START NOW</a>
                 </footer>
 
             </div>

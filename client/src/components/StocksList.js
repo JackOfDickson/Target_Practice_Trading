@@ -38,7 +38,7 @@ const StocksList = ({cryptos, addCrypto, cash, searchCryptos, searchTerm}) => {
 
              <p>A list of the top 100 cryptocurrencies available for purchase. Please use the search box below to filter results.</p>
 
-             <input onChange={handleSearch} type="search" id="search" name="search" placeholder="Search Cryptos" class="market-submit"/>
+             <input onChange={handleSearch} type="search" id="search" name="search" placeholder="Search Cryptos" class="market-submit" color="white"/>
             <p></p>
                 <table>
                     {cryptoList}

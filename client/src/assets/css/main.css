@@ -104,7 +104,7 @@
 }
 
 #movers-shakers h3 {
-    width:45%;
+    width:100%;
     border-bottom: 2px solid green;
     margin-bottom:15px;
 }
@@ -131,20 +131,20 @@
 .market-submit {
 	height: 38px;
 	border-radius: 10px;
-	background-color: rgba(50, 95, 255, 0.63);
-	color: white;
+	background-color: rgb(22, 30, 132);
+	color: #fff;
 	border-style:groove;
-	border-color: rgb(37, 48, 209);
+	border-color: rgb(22, 30, 132);
  
 }
 
 .market-submit:hover {
-	background-color: #4579ff;
+	background-color: #ffffff;
 }
 
 .container > h3 {
 	border-bottom: 2px solid green ;
-	width: 45%;
+	width: 100%;
 	margin-bottom:15px;
 }
 
@@ -440,7 +440,7 @@ input, select, textarea {
 		font-size: 19pt;
 		font-weight: 300;
 		line-height: 1.75em;
-		color: #888;
+		color: white;
 	}
 
 		body.is-preload *, body.is-preload *:before, body.is-preload *:after {
@@ -459,7 +459,7 @@ input, select, textarea {
 		font-size: 19pt;
 		font-weight: 300;
 		line-height: 1.75em;
-		color: #888;
+		color: rgb(74, 74, 74);
 	}
 
 	h1, h2, h3, h4, h5, h6 {
@@ -474,7 +474,7 @@ input, select, textarea {
 	}
 
 		h1 a strong, h2 a strong, h3 a strong, h4 a strong, h5 a strong, h6 a strong {
-			color: #333;
+			color:#fff;
 		}
 
 	h2 {
@@ -483,11 +483,11 @@ input, select, textarea {
 	}
 
 		h2.alt {
-			color: #888;
+			color: white;
 		}
 
 			h2.alt strong {
-				color: #666;
+				color: white;
 			}
 
 	h3 {
@@ -508,7 +508,7 @@ input, select, textarea {
 
 	strong, b {
 		font-weight: 300;
-		color: #666;
+		color: white;
 	}
 
 	em, i {
@@ -545,11 +545,11 @@ input, select, textarea {
 
 	hr {
 		border: 0;
-		border-top: solid 1px #ddd;
+		border-top: solid 1px white;
 	}
 
 	blockquote {
-		border-left: solid 0.5em #ddd;
+		border-left: solid 0.5em white;
 		padding: 1em 0 1em 2em;
 		font-style: italic;
 	}
@@ -2216,7 +2216,7 @@ input, select, textarea {
 		form input[type="password"]:focus,
 		form select:focus,
 		form textarea:focus {
-			box-shadow: 0 0 2px 1px #8ebebc;
+			box-shadow: 0 0 2px 1px white;
 			background: #fff;
 		}
 
@@ -2232,19 +2232,19 @@ input, select, textarea {
 	}
 
 	form ::-webkit-input-placeholder {
-		color: #555 !important;
+		color: white !important;
 	}
 
 	form :-moz-placeholder {
-		color: #555 !important;
+		color: white !important;
 	}
 
 	form ::-moz-placeholder {
-		color: #555 !important;
+		color: white !important;
 	}
 
 	form :-ms-input-placeholder {
-		color: #555 !important;
+		color:white !important;
 	}
 
 	form ::-moz-focus-inner {
@@ -2274,7 +2274,7 @@ input, select, textarea {
 		}
 
 		table thead {
-			background: #444;
+			background: #fff;
 			color: #fff;
 		}
 
@@ -2521,7 +2521,7 @@ input, select, textarea {
 					#nav ul li a span:before {
 						position: absolute;
 						left: 0;
-						color: #a1a1a1;
+						color: white;
 						text-align: center;
 						width: 1.25em;
 						line-height: 1.75em;
