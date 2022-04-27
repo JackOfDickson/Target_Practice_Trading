@@ -2,11 +2,17 @@ import React, {useEffect, useState, useRef} from "react"
 import UserStats from "../components/UserStats"
 import StocksList from "../components/StocksList"
 import PortfolioList from "../components/PortfolioList";
-import { getUsers, updateServer, getOneUser } from "../components/ServerService";
+import { getUsers, updateServer, getOneUser, saveUser } from "../components/ServerService";
 import { calculateIncrease } from "../components/Calculator";
 import CurrencySelector from "../components/Currency Selector";
 import ReactModal from 'react-modal'
 import Header from "../designComponents/Header";
+import Leaderboard from "../components/Leaderboard";
+import sound from '../components/sounds/win.mp3';
+import sound2 from '../components/sounds/loose.mp3';
+
+import SignUpForm from "../components/SignUpForm";
+
 
 const StocksBox = () => {
 
@@ -21,6 +27,7 @@ const StocksBox = () => {
     const [searchTerm, setSearchTerm] = useState(''); // Saves the current search field in search box
     const [fetchUser, setFetchUser] = useState(false)
     const [isModalOpen, setIsModalOpen] = useState(true)
+    const [signUpModal, setSignUpModal] = useState(false)
     // const [counter, setCounter] = useState(0)//counter for testing purposes
     
     const first = useRef(true);
@@ -36,7 +43,7 @@ const StocksBox = () => {
         {
             const interval = setInterval(() => {
                 getCryptos()  
-            }, 2000);
+            }, 5000);
             return () => clearInterval(interval);
         }
     }, []); 
@@ -50,6 +57,11 @@ const StocksBox = () => {
     
     // function to caluclate live value of crypto investment 
     // Only executes when a crypto is purchased, sold or won
+    useEffect(()=>
+    {
+        getUsers()
+        .then((re)=> setAllUsers(re))
+    }, [cryptos])
     useEffect(()=>
     {
         if (first.current)
@@ -69,11 +81,7 @@ const StocksBox = () => {
         .then((re)=> setActiveUser(re))
     }, [fetchUser])
 
-    useEffect(()=>
-    {
-        getUsers()
-        .then((re)=> setAllUsers(re))
-    })
+
     
         
     // Takes in crypto purchased and investment amount
@@ -107,6 +115,9 @@ const StocksBox = () => {
         setSelectedCurrency(currency);
     })
 
+    const winPlay = new Audio (sound);
+    const loosePlay = new Audio (sound2)
+
     // Mystery game function which determines whether the player wins or loses
     const handleMysteryCoin = ((array) => {
         if (activeUser.cash >= 2000) { // Check user has funds to play the game
@@ -114,16 +125,20 @@ const StocksBox = () => {
         const randomCoin = array[Math.floor(Math.random() * array.length)]
         if (randomCoin.name === selectedCurrency.name) {
             addMysteryCoin(randomCoin)
-            updateMessage("Congratulations!")
+            updateMessage("Congratulations! You have won the mystery coin!")
+            winPlay.play()
+
         }  
         else {
             setCashWallet(activeUser.cash - 2000)
             updateMessage(`Sorry the mystery coin was ${randomCoin.name}.`)
+            loosePlay.play()
         }
 
         } else { // If user does not have sufficient funds to play the game
 
-            updateMessage("Sorry, you do not have sufficent funds to gamble on our mystery coin!")
+            updateMessage("Sorry, you do not have sufficent funds to gamble on the mystery coin.")
+            loosePlay.play()
         }
 
     })
@@ -186,32 +201,73 @@ const StocksBox = () => {
         
     }
 
+    const handleSignUpClick=()=>
+    {
+        setSignUpModal(!signUpModal)
+        setIsModalOpen(!isModalOpen)
+    }
+
+    const registerUser = (name, email)=>
+    {
+        const createUser = {
+            name: name,
+             email: email,
+             cash: 10000,
+             portfolio: []
+        }
+        saveUser(createUser)
+    }
+
+    const loginModalStyle = {
+        content: {
+            backgroundColor: 'black',
+            // borderRadius: "50px",
+            // justifyContent: 'center',
+            // alignSelf: 'center',
+            // width: '600px',
+            // position:"relative",
+
+            
+       }}
+
    
 
     return (
         <>
-            <ReactModal
+            <ReactModal 
+            style={loginModalStyle}
             isOpen={isModalOpen}
             ariaHideApp={false}
-
+            
             >
-                <h2>Welcome to Target Practice Trading</h2>
+                <div class="login-image"><img src={require('../images/TARGET-PRACTICE.png')} alt="" width="200"/></div>
+                <h3 class="login-header">Welcome to Target Practice Trading</h3>
                 <form onSubmit={handleLogin}>
-                <label for='user'>Select User</label>
-                <select name='user'id='user' required>
+                <br></br>
+                <div class="login-select-bar"><select name='user'id='user' required>
                     <option>Select User</option>
                     {users}
-                </select>
-                <button type='submit'>Login</button>
+                </select></div>
+               
+                <div class="login-button-container"><button type='submit' class="login-button">Login</button></div>
                 </form>
+                <div class="login-button-container"><button onClick={handleSignUpClick} class="login-button">Sign Up</button></div>
+              
             </ReactModal>
+            <ReactModal
+                style={loginModalStyle}
+                isOpen={signUpModal}
+                ariaHideApp={false}>
+                    <SignUpForm handleSignUpClick={handleSignUpClick} allUsers={allUsers} registerUser={registerUser}/>
+            </ReactModal>
+            <Leaderboard allUsers={allUsers} cryptos={cryptos} activeUser={activeUser}/>
             <Header handleLogOut={handleLogOut}/>
             <UserStats activeUser={activeUser} investmentValue={investmentValue}/> 
             <div class='portfolio-container'><PortfolioList portfolio={activeUser.portfolio} sellCrypto={sellCrypto} investmentValue={investmentValue} cash={activeUser.cash}/></div>
-            
             <StocksList cryptos={cryptos} addCrypto={addCrypto} cash={activeUser.cash} searchCryptos={searchCryptos} searchTerm={searchTerm}/>
             <CurrencySelector cryptos={cryptos} onCurrencySelect={onCurrencySelect} handleMysteryCoin={handleMysteryCoin} message={message}/>
             </>
     )
 } 
 export default StocksBox
+

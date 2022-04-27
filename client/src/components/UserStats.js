@@ -1,24 +1,24 @@
 import './css/UserStats.css';
 import { Chart } from "react-google-charts";
+import { CurrencyFormatter } from './CurrencyFormatter';
 
 
 const UserStats = ({activeUser, investmentValue}) => {
 
-    const formatbalance = parseFloat(activeUser.cash).toFixed(2); // format to two decimal places
-    const activeBalance = parseFloat(formatbalance).toLocaleString("en-US"); // Separate large numbers with commas
+    const activeBalance = CurrencyFormatter(activeUser.cash); // format balance
 
     const numberOfInvestments = (activeUser.portfolio).length; // Number of purchases
 
     // Map crypto portfolio
     const cryptosPurchased = activeUser.portfolio.map ((crypto) => { 
 
-        const formatPurchasePrice = parseFloat(crypto.coin.priceUsd).toFixed(2); // format purchase price to two decimal places
-        const purchasePrice = parseFloat(formatPurchasePrice).toLocaleString("en-US"); // Separate large numbers with commas
+    const purchasePrice = CurrencyFormatter(crypto.coin.priceUsd);
+
 
         return (
         <>
         <br />• {crypto.coin.name} ({crypto.coin.symbol}) - ${crypto.investment}
-        <br /><em>Bought at ${purchasePrice}</em>
+        <br /><em>Bought at {purchasePrice}</em>
         </>
         )
     });
@@ -62,13 +62,12 @@ for (let i = 0; i < investmentArray.length; ++i) { // Run through each item in i
 
         investmentCalculation+=crypto.price;
 
-       const formatSellPrice = parseFloat(crypto.price).toFixed(2); // format sell price to two decimal places
-       const sellPrice = parseFloat(formatSellPrice).toLocaleString("en-US"); // Separate large numbers with commas
 
+    const sellPrice = CurrencyFormatter(crypto.price);
 
         return (
             <>
-                <br />• {crypto.name} investment is now worth ${sellPrice}
+                <br />• {crypto.name} investment is now worth {sellPrice}
             </>
             )        
     });
@@ -78,13 +77,11 @@ for (let i = 0; i < investmentArray.length; ++i) { // Run through each item in i
 
 
    // Calculation and formatting for cash and crypto balances
-   const formatInvestmentTotalValue = parseFloat(investmentCalculation).toFixed(2); // format sell price to two decimal places
-   const investmentTotalValue = parseFloat(formatInvestmentTotalValue).toLocaleString("en-US"); // Separate large numbers with commas
 
-   const workingBalance = parseFloat(activeUser.cash) + parseFloat(investmentCalculation); // Calculate total value of portfolio
-   const formatWorkingBalance = parseFloat(workingBalance).toFixed(2); // format sell price to two decimal places
-   const equityBalance = parseFloat(formatWorkingBalance).toLocaleString("en-US"); // Separate large numbers with commas
+    const investmentTotalValue = CurrencyFormatter(investmentCalculation);  //Format investment calculation
 
+    const workingBalance = parseFloat(activeUser.cash) + parseFloat(investmentCalculation); // Calculate total value of portfolio
+    const equityBalance = CurrencyFormatter(workingBalance); // Format balance
 
         
     // Data for User stats chart
@@ -98,12 +95,40 @@ for (let i = 0; i < investmentArray.length; ++i) { // Run through each item in i
 
 
     const options = {
-        title: "Value of Invested Cryptos in USD",
         width: 900,
         height: 400,
         bar: { groupWidth: "95%" },
         legend: { position: "none" },
+        backgroundColor: {
+            fill: 'none'},
+        hAxis: {
+            textStyle: {
+                color: "white"
+        }},
+            vAxis: {
+                textStyle: {
+                    color: '#ffffff'
+                
+            },
+        },
+       
         };
+
+
+    let cryptoChart;
+    if (investmentArray !=false) {
+
+        cryptoChart =<Chart
+        chartType="BarChart"
+        width="100%"
+        height="400px"
+        data={data}
+        options={options}
+    />
+
+   
+    }
+     
 
     // End of chart data building section
 
@@ -116,13 +141,10 @@ for (let i = 0; i < investmentArray.length; ++i) { // Run through each item in i
                 <h2>User Stats <i class="fa-solid fa-chart-column"></i></h2>
             </header>
 
-            <Chart
-                chartType="BarChart"
-                width="100%"
-                height="400px"
-                data={data}
-                options={options}
-            />
+
+
+            {cryptoChart}
+
 
             <div id="user-stats-box">
                 <div className="left">
@@ -131,13 +153,14 @@ for (let i = 0; i < investmentArray.length; ++i) { // Run through each item in i
                     <p>Cryptos Purchased: {cryptosPurchased}</p>
                 </div>
                 <div className="right">
-                <p>Equity Balance: ${equityBalance}
-                <br /><em>Cash Balance: ${activeBalance}</em>
-                <br /><em>Crypto Balance: ${investmentTotalValue}</em>
+                <p>Equity Balance: {equityBalance}
+                <br /><em>Cash Balance: {activeBalance}</em>
+                <br /><em>Crypto Balance: {investmentTotalValue}</em>
                 </p>
                 <p>Crypto Value: {investmentPortfolio}</p>
 
                 </div>
+                
             </div>
 
         </div>

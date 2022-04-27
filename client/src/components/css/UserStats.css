@@ -1,12 +1,3 @@
-#user-stats-box {
-    display:flex;
-    flex-direction: row;
-    margin:auto;
-}
-
-.left, .right {flex:50%;padding:10px; }
-.left p, .right p {padding:10px;font-weight: 700;color:black; box-shadow: 5px 5px black;}
-.left p {background-color: #e6f8eb;}
-.right p {background-color: #cde5f3;}
-.bestPercentage {float:right;color:green;}
-.worstPercentage {float:right;color:red;}
+/* div
+{
+background: linear-gradient(to right, rgba(0, 0, 0, 0.733), #457affc7);} */

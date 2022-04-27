@@ -3,14 +3,36 @@ import React, {useEffect, useState} from "react"
 const CurrencySelector = ({cryptos, onCurrencySelect, handleMysteryCoin, message}) => {
     
     const [mysteryOptions, setMysteryOptions] = useState([])
+    const [cooldownTimer, setCooldownTimer] = useState(0)
+    const [activateCooldown, setActivateCooldown] = useState(false)
     
     
     useEffect (() => {
         setOptions();
-    })
+    },[cryptos])
+
+    useEffect(()=>
+    {
+        if (activateCooldown === true)
+        {
+            const interval = setInterval(() => {
+                if(cooldownTimer > 0)
+                    {
+                        setCooldownTimer(cooldownTimer - 1);
+                    }
+                else
+                {
+                    setActivateCooldown(false);
+                }
+            }, 1000);
+            return () => clearInterval(interval);
+        }
+    }, [cooldownTimer])
     
     const onMysteryCoinClick = () => {
         handleMysteryCoin(mysteryOptions)
+        setCooldownTimer(60);
+        setActivateCooldown(true)
     }
 
     const setOptions = () => {
@@ -46,7 +68,7 @@ const CurrencySelector = ({cryptos, onCurrencySelect, handleMysteryCoin, message
         </select>
         </div>
         <div class="selection-bar">
-        <button onClick={onMysteryCoinClick} class="selection-bar">Gamble on our mystery coin!</button>
+        {cooldownTimer? <button disabled class="selection-bar">{cooldownTimer}</button>:<button onClick={onMysteryCoinClick} class="selection-bar">Gamble on our mystery coin!</button>}
         </div>
         <div class="message">{message}</div>
         </div>
