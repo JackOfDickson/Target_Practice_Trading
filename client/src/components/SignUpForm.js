@@ -27,6 +27,7 @@ const SignUpForm = ({allUsers, handleSignUpClick, registerUser})=>
 
     
     return(
+        <>
         <form onSubmit={handleUserFormSubmit}>
             <label htmlFor="name-input">Enter you name</label>
             <input type='text' name='name' id='id' value={nameInput} onChange={handleNameInput}/>
@@ -34,6 +35,8 @@ const SignUpForm = ({allUsers, handleSignUpClick, registerUser})=>
             <input type='email' name='email-input' id='email-input' value={emailInput} onChange={handleEmailInput}/>
             <button type='submit'>Register</button>
         </form>
+        <button onClick={handleSignUpClick}>Cancel</button>
+        </>
     )
 }
 
