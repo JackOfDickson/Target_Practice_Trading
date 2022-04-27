@@ -255,6 +255,7 @@ const StocksBox = () => {
               
             </ReactModal>
             <ReactModal
+                style={loginModalStyle}
                 isOpen={signUpModal}
                 ariaHideApp={false}>
                     <SignUpForm handleSignUpClick={handleSignUpClick} allUsers={allUsers} registerUser={registerUser}/>

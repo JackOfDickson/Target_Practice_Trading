@@ -28,14 +28,15 @@ const SignUpForm = ({allUsers, handleSignUpClick, registerUser})=>
     
     return(
         <>
-        <form onSubmit={handleUserFormSubmit}>
-            <label htmlFor="name-input">Enter you name</label>
-            <input type='text' name='name' id='id' value={nameInput} onChange={handleNameInput}/>
-            <label htmlFor="email-input">Enter your email</label>
-            <input type='email' name='email-input' id='email-input' value={emailInput} onChange={handleEmailInput}/>
-            <button type='submit'>Register</button>
+        <br></br>
+        <form class="form" onSubmit={handleUserFormSubmit}>
+            <label class="login-header" htmlFor="name-input">Enter you name</label>
+            <div class="login-select-bar2-container"><div class="login-select-bar2"><input type='text' name='name' id='id' value={nameInput} onChange={handleNameInput}/></div></div>
+            <label class="login-header" htmlFor="email-input">Enter your email</label>
+            <div class="login-select-bar2-container"><div class="login-select-bar2"><input  type='email' name='email-input' id='email-input' value={emailInput} onChange={handleEmailInput}/></div></div>
+            <div class="login-button-container "><button class="login-button" type='submit'>Register</button></div>
         </form>
-        <button onClick={handleSignUpClick}>Cancel</button>
+        <div class="login-button-container"><button class="login-button" onClick={handleSignUpClick}>Cancel</button></div>
         </>
     )
 }
