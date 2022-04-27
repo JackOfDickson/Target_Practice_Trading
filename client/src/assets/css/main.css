@@ -1,6 +1,64 @@
 @import url("fontawesome-all.min.css");
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400,600");
 
+
+
+/* ------ MARKET SECTION ------ */
+
+#main > section.five {
+	padding: 2em 4em 2em 4em;
+	color: white;
+	background: linear-gradient(to right, black, #4579ff);
+}
+
+#movers-shakers h3 {
+    width:100%;
+    border-bottom: 2px solid green;
+    margin-bottom:15px;
+}
+
+#movers-shakers-box {
+    display:flex;
+    flex-direction: row;
+    margin:auto;
+}
+
+.best, .worst {flex:50%;padding:10px; }
+.best p, .worst p {padding:10px;font-weight: 700;color:black}
+.best p {background-color: #49ff7dca; border-radius: 10px; color: white;}
+.worst p {background-color: #fe6464b8; border-radius: 10px; color: white;}
+.bestPercentage {float:right;color:green;}
+.worstPercentage {float:right;color:rgba(255, 35, 35, 0.736);}
+
+.table-button {
+	height: 38px;
+	margin-left: 20px;
+	text-align: center;
+	
+	
+	
+}
+
+.market-submit {
+	height: 38px;
+	border-radius: 10px;
+	background-color: rgba(50, 95, 255, 0.63);
+	color: white;
+	border-style:groove;
+	border-color: rgb(37, 48, 209);
+ 
+}
+
+.market-submit:hover {
+	background-color: #4579ff;
+}
+
+.container > h3 {
+	border-bottom: 2px solid rgb(195, 0, 255);
+}
+
+
+
 /* ------ USER STATS SECTION ------ */
 
 .three {
@@ -25,16 +83,16 @@
 
 
 .left, .right {flex:50%;padding: 1px 20px;}
-.left p, .right p {padding:5px;color:black; box-shadow: 2px 2px #444; font-weight:bolder;}
-.left p {background-color: #4579ff; border-radius: 10px; color: white;}
-.right p {background-color: #4579ff; border-radius: 10px; color: white;}
-.bestPercentage {float:right;color:green;}
-.worstPercentage {float:right;color:red;}
+.left p, .right p {padding:5px;color:black; font-weight:bolder; }
+.left p {background-color: #2a26ff7a; border-radius: 10px; color: white; padding: 5px 15px;}
+.right p {background-color: #2a26ff7a; border-radius: 10px; color: white; padding: 5px 15px;}
+.bestPercentage {float:right;color:rgb(0, 143, 0);}
+.worstPercentage {float:right;color:rgb(193, 0, 0);}
 
 /* ------ LEADER BOARD SECTION ------ */
 
 #leaderboard2 {
-	padding: 0 4em 2em 4em;
+	padding: 2em 4em 2em 4em;
 	color: white;
 	background: linear-gradient(to right, black, #4579ff);
 }
@@ -75,6 +133,8 @@
 .howToTitle {
 	color: white
 }
+
+
 
 
 /* ------ MYSTERY COIN SECTION ------ */
@@ -161,7 +221,7 @@
     background-color: white;
     align-content: flex-start;
 	background-color: rgba(255, 255, 255, 0);
-	justify-content: space-between;
+	justify-content: left;
 	
 }
 
@@ -185,7 +245,7 @@
 }
 
 .port-title {
-	color: #white; 
+	color: white; 
 }
 
 .portfolio-item:hover {
@@ -2497,9 +2557,7 @@ input, select, textarea {
 
 			
 
-			#main > section.four {
-			}
-
+			
 /* Wide */
 
 	@media screen and (min-width: 961px) and (max-width: 1880px) {

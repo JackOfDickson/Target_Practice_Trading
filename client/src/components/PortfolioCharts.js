@@ -27,8 +27,21 @@ const PortfolioCharts = ({portfolio, cash}) => {
                 options={{
                     backgroundColor: {
                         fill: 'none'},
-                    labelStyle: {
-                        fill: 'white'}}}
+                    hAxis: {
+                        textStyle: {
+                            color: "white"
+                     }},
+                    vAxis: {
+                        textStyle: {
+                        color: '#ffffff'
+                        }},
+                        legend: {
+                        textStyle: {
+                            color: 'white'
+                        }
+                    }
+
+                }}
                 legendToggle
                 
                 

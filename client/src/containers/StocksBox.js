@@ -121,7 +121,7 @@ const StocksBox = () => {
         const randomCoin = array[Math.floor(Math.random() * array.length)]
         if (randomCoin.name === selectedCurrency.name) {
             addMysteryCoin(randomCoin)
-            updateMessage("Congratulations!")
+            updateMessage("Congratulations! You have won the mystery coin!")
             winPlay.play()
 
         }  
@@ -133,7 +133,7 @@ const StocksBox = () => {
 
         } else { // If user does not have sufficient funds to play the game
 
-            updateMessage("Sorry, you do not have sufficent funds to gamble on our mystery coin!")
+            updateMessage("Sorry, you do not have sufficent funds to gamble on the mystery coin.")
             loosePlay.play()
         }
 
@@ -220,7 +220,6 @@ const StocksBox = () => {
             <Header handleLogOut={handleLogOut}/>
             <UserStats activeUser={activeUser} investmentValue={investmentValue}/> 
             <div class='portfolio-container'><PortfolioList portfolio={activeUser.portfolio} sellCrypto={sellCrypto} investmentValue={investmentValue} cash={activeUser.cash}/></div>
-            
             <StocksList cryptos={cryptos} addCrypto={addCrypto} cash={activeUser.cash} searchCryptos={searchCryptos} searchTerm={searchTerm}/>
             <CurrencySelector cryptos={cryptos} onCurrencySelect={onCurrencySelect} handleMysteryCoin={handleMysteryCoin} message={message}/>
             </>
