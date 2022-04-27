@@ -46,6 +46,7 @@ for (let i = 0; i < investmentArray.length; ++i) { // Run through each item in i
         if (i !== unique && investmentArray[i].name === investmentArray[unique].name) { 
             investmentArray[i].price+=investmentArray[unique].price; // Add value to first listing of cryptocurrency
             investmentArray.splice(unique, 1); // Remove duplicate entry from investmentArray
+            unique--; // decrement index of second for loop
         } // end if
     } // end of second for loop
 } // end of first for loop
@@ -116,8 +117,25 @@ for (let i = 0; i < investmentArray.length; ++i) { // Run through each item in i
        
         };
 
-        
 
+    let cryptoChart;
+    if (investmentArray !=false) {
+
+        cryptoChart =<Chart
+        chartType="BarChart"
+        width="100%"
+        height="400px"
+        data={data}
+        options={options}
+    />
+
+    } else {
+
+
+
+    }
+
+     
 
     // End of chart data building section
 
@@ -129,15 +147,12 @@ for (let i = 0; i < investmentArray.length; ++i) { // Run through each item in i
             <header>
                 <h2>User Stats <i class="fa-solid fa-chart-column"></i></h2>
             </header>
-            <p class="chart-p">Value of Invested Cryptos in USD</p>
-           <div><Chart
-                chartType="BarChart"
-                width="100%"
-                height="400px"
-                data={data}
-                options={options}
-            /></div> 
-            <br></br>
+
+
+
+            {cryptoChart}
+
+
             <div id="user-stats-box">
                 <div className="left">
                     <p>Initial Investment: $10,000</p>
