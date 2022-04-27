@@ -4,16 +4,14 @@ import { Chart } from "react-google-charts";
 
 const UserStats = ({activeUser, investmentValue}) => {
 
-    const formatbalance = parseFloat(activeUser.cash).toFixed(2); // format to two decimal places
-    const activeBalance = parseFloat(formatbalance).toLocaleString("en-US"); // Separate large numbers with commas
+     const activeBalance = parseFloat(activeUser.cash).toFixed(2).toLocaleString("en-US"); // format cash
 
     const numberOfInvestments = (activeUser.portfolio).length; // Number of purchases
 
     // Map crypto portfolio
     const cryptosPurchased = activeUser.portfolio.map ((crypto) => { 
 
-        const formatPurchasePrice = parseFloat(crypto.coin.priceUsd).toFixed(2); // format purchase price to two decimal places
-        const purchasePrice = parseFloat(formatPurchasePrice).toLocaleString("en-US"); // Separate large numbers with commas
+  const purchasePrice = parseFloat(crypto.coin.priceUsd).toFixed(2).toLocaleString("en-UK"); // Format price
 
         return (
         <>
@@ -62,8 +60,7 @@ for (let i = 0; i < investmentArray.length; ++i) { // Run through each item in i
 
         investmentCalculation+=crypto.price;
 
-       const formatSellPrice = parseFloat(crypto.price).toFixed(2); // format sell price to two decimal places
-       const sellPrice = parseFloat(formatSellPrice).toLocaleString("en-US"); // Separate large numbers with commas
+       const sellPrice = parseFloat(crypto.price).toFixed(2).toLocaleString("en-US"); // Format crypto price
 
 
         return (
@@ -78,12 +75,11 @@ for (let i = 0; i < investmentArray.length; ++i) { // Run through each item in i
 
 
    // Calculation and formatting for cash and crypto balances
-   const formatInvestmentTotalValue = parseFloat(investmentCalculation).toFixed(2); // format sell price to two decimal places
-   const investmentTotalValue = parseFloat(formatInvestmentTotalValue).toLocaleString("en-US"); // Separate large numbers with commas
 
-   const workingBalance = parseFloat(activeUser.cash) + parseFloat(investmentCalculation); // Calculate total value of portfolio
-   const formatWorkingBalance = parseFloat(workingBalance).toFixed(2); // format sell price to two decimal places
-   const equityBalance = parseFloat(formatWorkingBalance).toLocaleString("en-US"); // Separate large numbers with commas
+    const investmentTotalValue = parseFloat(investmentCalculation).toFixed(2).toLocaleString("en-US"); //Format investment calculation
+
+    const workingBalance = parseFloat(activeUser.cash) + parseFloat(investmentCalculation); // Calculate total value of portfolio
+    const equityBalance = parseFloat(workingBalance).toFixed(2).toLocaleString("en-US"); // Format balance
 
 
         
