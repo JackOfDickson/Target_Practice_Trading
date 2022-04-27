@@ -1,5 +1,6 @@
 import React from "react";
 import { LBC } from "./Calculator";
+import { CurrencyFormatter } from './CurrencyFormatter';
 
 const Leaderboard = ({allUsers, cryptos, activeUser})=>
 {
@@ -15,18 +16,21 @@ const sortRanks = userRanks.sort((a,b)=>
 })
 
 const leaderBoard = sortRanks.map(rank=>
+
+    
     {
         if(rank.name === activeUser.name)
         {
+            const portfolioValue = CurrencyFormatter(rank.equity);
 
-            return <li><strong class="user">{rank.name}  ${rank.equity.toFixed(2)}<span>&#8592;</span></strong></li>
-        }
+            return <li><strong class="user">{rank.name}  {portfolioValue}<span>&#8592;</span></strong></li>
+        } 
         else
-        {
-            return <li>{rank.name}  ${rank.equity.toFixed(2)}</li>
+        {   const portfolioValue = CurrencyFormatter(rank.equity);
+            return <li>{rank.name}  {portfolioValue}</li>
 
         }
-    })
+    })   
 
 
     return(

@@ -2543,7 +2543,8 @@ input, select, textarea {
 	#footer {
 		margin-left: 375px;
 		text-align: center;
-		background-color: #dce3e2;
+		color:#fff;
+		background: linear-gradient(to right, black, #4579FF);
 		padding: 3em 0 4em 0;
 		box-shadow: inset 0 1px 0 0 rgba(0, 0, 0, 0.05), inset 0 0.1em 0.1em 0 rgba(0, 0, 0, 0.025);
 		font-size: 0.8em;
@@ -2568,6 +2569,10 @@ input, select, textarea {
 					border-left: 0;
 					padding-left: 0;
 					margin-left: 0;
+				}
+		
+				#footer img {
+					text-align:center;
 				}
 
 /* Main */
@@ -2833,7 +2838,7 @@ input, select, textarea {
 				}
 
 			#logo {
-				margin: 1.5em 1.25em 1.25em 1.25em;
+				margin: 1.5em 1.25em 105em 1.25em;
 			}
 
 			#nav ul li a {
@@ -3006,4 +3011,8 @@ input, select, textarea {
 					margin-top: 0;
 				}
 
+	}
+
+	#buy-form > button{
+		margin: 10px;
 	}

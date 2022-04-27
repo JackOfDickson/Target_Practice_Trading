@@ -1,6 +1,7 @@
 import React from "react";
 import './css/MoversShakers.css';
 import { Chart } from "react-google-charts";
+import { CurrencyFormatter } from './CurrencyFormatter';
 
 const MoversShakers = ({cryptos}) => {
 
@@ -19,29 +20,28 @@ const MoversShakers = ({cryptos}) => {
 
     // Find the top five cryptos over the last 24 hours
     const bestCryptosList = bestCryptos.slice(0, 5).map(coin=>{ 
-        const diff = parseFloat(coin.changePercent24Hr).toFixed(2); // Only show two decimal places in percentage
+        const diff = CurrencyFormatter(coin.changePercent24Hr); // Only show two decimal places in percentage
 
-        const formatPrice = parseFloat(coin.priceUsd).toFixed(2);
-        const coinPrice = parseFloat(formatPrice).toLocaleString("en-US"); // Separate large numbers with commas
+
+        const coinPrice = CurrencyFormatter(coin.priceUsd); // Separate large numbers with commas
 
             return (
                 <div className="bestCryptoDetails">
-                    <p>{coin.name}  ({coin.symbol}) &nbsp;${coinPrice}  <span className="bestPercentage">{diff}%</span></p>
+                    <p>{coin.name}  ({coin.symbol}) &nbsp;{coinPrice}  <span className="bestPercentage">{diff}%</span></p>
                 </div>
             )
         })
 
      // Find the worst five cryptos over the last 24 hours
     const worstCryptosList = worstCryptos.slice(0, 5).map(coin=>{ 
-        const diff = parseFloat(coin.changePercent24Hr).toFixed(2); // Only show two decimal places in percentage
+        const diff = CurrencyFormatter(coin.changePercent24Hr); // Only show two decimal places in percentage
 
-        const formatPrice = parseFloat(coin.priceUsd).toFixed(2);
-        const coinPrice = parseFloat(formatPrice).toLocaleString("en-US"); // Separate large numbers with commas
+        const coinPrice = CurrencyFormatter(coin.priceUsd); // Format coin price
 
 
             return (
                 <div className="worstCryptoDetails">
-                    <p>{coin.name} ({coin.symbol}) &nbsp;${coinPrice} <span className="worstPercentage">{diff}%</span></p>
+                    <p>{coin.name} ({coin.symbol}) &nbsp;{coinPrice} <span className="worstPercentage">{diff}%</span></p>
                 </div>
             )
         })

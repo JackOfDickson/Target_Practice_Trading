@@ -8,7 +8,7 @@ const PortfolioList = ({portfolio, sellCrypto, investmentValue, cash})=>
         if (investmentValue)
         {
           
-            const currentValue = investmentValue.find(cry=> cry.coin === coin.coin.name)
+            const currentValue = investmentValue[index]
             if(currentValue){
                 return (
                 <PortfolioItem coin={coin} index={index} key={index} sellCrypto={sellCrypto} liveUpdate={currentValue.sell_price}/>
