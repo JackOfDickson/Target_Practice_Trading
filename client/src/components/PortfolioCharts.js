@@ -43,7 +43,7 @@ for (let i = 0; i < portfolioArray.length; ++i) { // Run through each item in in
 
     
     return (
-        <>
+        
             <Chart
 
                 chartType="PieChart"
@@ -72,9 +72,8 @@ for (let i = 0; i < portfolioArray.length; ++i) { // Run through each item in in
                 legendToggle
                 
                 
-                
-/></div>
-        </>
+
+        />
     )
 };
 export default PortfolioCharts;

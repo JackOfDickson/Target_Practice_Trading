@@ -129,12 +129,8 @@ for (let i = 0; i < investmentArray.length; ++i) { // Run through each item in i
         options={options}
     />
 
-    } else {
-
-
-
+   
     }
-
      
 
     // End of chart data building section
