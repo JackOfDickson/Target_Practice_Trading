@@ -27,15 +27,16 @@ const Stock = ({coin, addCrypto, cashWallet}) => {
     const modalStyle ={
      content: {
         border: '2px',
+        color: 'white',
+        padding: '25px',
         borderRadius: '4px',
         bottom: 'auto',
         height: '200px',  // set height
         left: '50%',
-        padding: '2rem',
         position: 'fixed',
         right: 'auto',
         top: '50%', // start from center
-        
+        background: 'linear-gradient(to right, rgba(0, 0, 0, 0.733), #457affc7)',
         width: '40%',
         maxWidth: '40rem',
         transform: 'translate(-40%, -10%)'
@@ -48,6 +49,9 @@ const Stock = ({coin, addCrypto, cashWallet}) => {
             setAmountInput(event.target.value)
         }
     }
+    
+    const cash = CurrencyFormatter(cashWallet);
+
 
     let cryptoPrice;
     
@@ -68,14 +72,14 @@ const Stock = ({coin, addCrypto, cashWallet}) => {
             <ReactModal
             style={modalStyle}
             isOpen={isBuyModalOpen}>
-            <form onSubmit={handleBuySubmit}>
+            <form onSubmit={handleBuySubmit} id='buy-form'>
 
-
-                <button type='submit'>Buy {coin.name}</button>
+                <span>Available Cash: {cash}</span><br></br>
                 <input type='decimal' value={amountInput} min='0' onChange={handleAmountChange} required></input>
-
+                <button type='submit'>Buy {coin.name}</button>
+                <button onClick={toggleModal}>Cancel</button>
             </form>
-            <button onClick={toggleModal}>Cancel</button>
+           
             </ReactModal>
         </td>
     </tr>

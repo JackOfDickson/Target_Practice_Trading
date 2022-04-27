@@ -2933,3 +2933,7 @@ input, select, textarea {
 				}
 
 	}
+
+	#buy-form > button{
+		margin: 10px;
+	}
