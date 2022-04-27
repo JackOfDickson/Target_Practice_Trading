@@ -31,3 +31,34 @@ We are going to add the option for users to play a game where:
 - Their portfolio goes up and down over time according to the market
 - They can sell their investments at any time and re-invest in other cryptocurrencies
 
+## How to get the app running
+
+
+### First time setup
+After cloning the repository run the following commands in server:
+    ```
+    npm install
+    npm run seeds
+    ```
+
+Then run the following commands in the client :
+    ```
+    npm install
+    ```
+
+### Starting the application
+From now on you want to run the following commands to get the application running:
+
+In the server folder: 
+    ```
+    npm run server:dev
+    ```
+
+and then in the client folder:
+    ```
+    npm start
+    ```
+
+You should be directed to your browser where the application will load and you will see the login page!
+
+
