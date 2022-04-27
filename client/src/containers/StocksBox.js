@@ -8,7 +8,11 @@ import CurrencySelector from "../components/Currency Selector";
 import ReactModal from 'react-modal'
 import Header from "../designComponents/Header";
 import Leaderboard from "../components/Leaderboard";
+import sound from '../components/sounds/win.mp3';
+import sound2 from '../components/sounds/loose.mp3';
+
 import SignUpForm from "../components/SignUpForm";
+
 
 const StocksBox = () => {
 
@@ -111,6 +115,9 @@ const StocksBox = () => {
         setSelectedCurrency(currency);
     })
 
+    const winPlay = new Audio (sound);
+    const loosePlay = new Audio (sound2)
+
     // Mystery game function which determines whether the player wins or loses
     const handleMysteryCoin = ((array) => {
         if (activeUser.cash >= 2000) { // Check user has funds to play the game
@@ -118,16 +125,20 @@ const StocksBox = () => {
         const randomCoin = array[Math.floor(Math.random() * array.length)]
         if (randomCoin.name === selectedCurrency.name) {
             addMysteryCoin(randomCoin)
-            updateMessage("Congratulations!")
+            updateMessage("Congratulations! You have won the mystery coin!")
+            winPlay.play()
+
         }  
         else {
             setCashWallet(activeUser.cash - 2000)
             updateMessage(`Sorry the mystery coin was ${randomCoin.name}.`)
+            loosePlay.play()
         }
 
         } else { // If user does not have sufficient funds to play the game
 
-            updateMessage("Sorry, you do not have sufficent funds to gamble on our mystery coin!")
+            updateMessage("Sorry, you do not have sufficent funds to gamble on the mystery coin.")
+            loosePlay.play()
         }
 
     })
@@ -237,10 +248,10 @@ const StocksBox = () => {
             <Header handleLogOut={handleLogOut}/>
             <UserStats activeUser={activeUser} investmentValue={investmentValue}/> 
             <div class='portfolio-container'><PortfolioList portfolio={activeUser.portfolio} sellCrypto={sellCrypto} investmentValue={investmentValue} cash={activeUser.cash}/></div>
-            
             <StocksList cryptos={cryptos} addCrypto={addCrypto} cash={activeUser.cash} searchCryptos={searchCryptos} searchTerm={searchTerm}/>
             <CurrencySelector cryptos={cryptos} onCurrencySelect={onCurrencySelect} handleMysteryCoin={handleMysteryCoin} message={message}/>
             </>
     )
 } 
 export default StocksBox
+

@@ -40,17 +40,40 @@ for (let i = 0; i < portfolioArray.length; ++i) { // Run through each item in in
         const currentInvestment = [investment.name, investment.investment]
         pieChart.push(currentInvestment)
     })
+
     
     return (
         <>
             <Chart
+
                 chartType="PieChart"
                 data={pieChart}
                 // options = "my investment"
                 width="100%"
                 height="400px"
+                options={{
+                    backgroundColor: {
+                        fill: 'none'},
+                    hAxis: {
+                        textStyle: {
+                            color: "white"
+                     }},
+                    vAxis: {
+                        textStyle: {
+                        color: '#ffffff'
+                        }},
+                        legend: {
+                        textStyle: {
+                            color: 'white'
+                        }
+                    }
+
+                }}
                 legendToggle
-/>
+                
+                
+                
+/></div>
         </>
     )
 };

@@ -6,12 +6,16 @@ const Stock = ({coin, addCrypto, cashWallet}) => {
     const [amountInput, setAmountInput] = useState('');
     const [isBuyModalOpen, setIsBuyModalOpen] = useState(false)
 
+    
+
     const handleBuySubmit = (event)=>
     {   
         event.preventDefault();
         addCrypto(coin, Number(amountInput), Number(amountInput));
         setAmountInput('')
+
         toggleModal()
+
     }
 
     const toggleModal =()=>
@@ -57,8 +61,11 @@ const Stock = ({coin, addCrypto, cashWallet}) => {
             style={modalStyle}
             isOpen={isBuyModalOpen}>
             <form onSubmit={handleBuySubmit}>
+
+
                 <button type='submit'>Buy {coin.name}</button>
                 <input type='decimal' value={amountInput} min='0' onChange={handleAmountChange} required></input>
+
             </form>
             <button onClick={toggleModal}>Cancel</button>
             </ReactModal>

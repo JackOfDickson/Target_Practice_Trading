@@ -59,11 +59,35 @@ const MoversShakers = ({cryptos}) => {
         <div id="movers-shakers">
             <h3>Movers & Shakers <i class="fa-solid fa-thumbs-up"></i> <i class="fa-solid fa-thumbs-down"></i></h3>
             <p>Check out the biggest shifts in the market over the last 24 hours.</p>
-            <Chart chartType="ColumnChart" width="100%" height="400px" data={data} />
+           
             <div id="movers-shakers-box">
                 <div className="best">{bestCryptosList}</div>
                 <div className="worst">{worstCryptosList}</div>
-            </div>
+            </div> 
+            <div class="graph-container"><Chart chartType="ColumnChart" width="100%" height="400px" data={data}
+                options={{
+                    backgroundColor: {
+                        fill: 'none'},
+                    labelStyle: {
+                        fill: 'white'},
+                    colors: [ 'yellow'],
+                    hAxis: {
+                        textStyle: {
+                            color: "white"
+                     }},
+                    vAxis: {
+                        textStyle: {
+                        color: 'white'
+                        }},
+                    legend: {
+                        textStyle: {
+                            color: 'white'
+                        }
+                    }
+                    
+                }}
+            /></div>
+            <br></br>
         </div>
     )
 }
