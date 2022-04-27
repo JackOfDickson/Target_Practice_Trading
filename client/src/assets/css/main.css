@@ -1,6 +1,93 @@
 @import url("fontawesome-all.min.css");
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400,600");
 
+#top {
+	background: linear-gradient(to right, #4579FF, black);
+}
+
+.target-image > img{
+	float: right;
+	height: 300px;
+}
+
+
+#buy-form > button{
+	margin: 10px;
+}
+
+#warning {
+	color: red;
+}
+
+
+/* ------ LOGIN SECTION ------ */
+
+.login-header {
+	text-align: center;
+	color: white;
+}
+
+.login-image {
+	padding-top: -50px;
+	display: flex;
+  	justify-content: center;
+	
+}
+
+.login-select-bar {
+	display: flex;
+  	justify-content: center;
+	margin-bottom: 10px;
+}
+
+.login-select-bar2-container {
+	display: flex;
+  	justify-content: center;
+	
+	
+}
+
+.login-select-bar2 {
+	text-align: center;
+	width: 300px;
+	color: black;
+	font-weight: bolder;
+	background-color: white;
+	text-align: center;
+	border-radius: 10px;
+	margin-bottom: 10px;
+}
+
+.empty {
+	background-color: black;
+}
+
+
+.login-select-bar > select {
+	text-align: center;
+	width: 300px;
+	color: black;
+	font-weight: bolder;
+	background-color: white;
+}
+
+.login-button-container {
+	display: flex;
+	justify-content: center;
+	margin-bottom: 10px
+}
+
+.login-button {
+	text-align: center;
+	width: 300px;
+	background-color: #4579ff;
+	font-size: 0.7em;
+}
+
+.login-button:hover {
+	background-color: #a4beff;
+}
+
 
 
 /* ------ MARKET SECTION ------ */
@@ -25,18 +112,15 @@
 
 .best, .worst {flex:50%;padding:10px; }
 .best p, .worst p {padding:10px;font-weight: 700;color:black}
-.best p {background-color: #49ff7dca; border-radius: 10px; color: white;}
-.worst p {background-color: #fe6464b8; border-radius: 10px; color: white;}
-.bestPercentage {float:right;color:green;}
-.worstPercentage {float:right;color:rgba(255, 35, 35, 0.736);}
+.best p {background-color: #75ff9cca; border-radius: 10px; color: white;}
+.worst p {background-color: #f76565c6; border-radius: 10px; color: white;}
+.bestPercentage {float:right;color:rgb(52, 134, 52);text-shadow: 1px 1px white;}
+.worstPercentage {float:right;color:rgb(251, 1, 1);text-shadow: 1px 1px white;}
 
 .table-button {
 	height: 38px;
 	margin-left: 20px;
 	text-align: center;
-	
-	
-	
 }
 
 .market-submit {
@@ -54,10 +138,12 @@
 }
 
 .container > h3 {
-	border-bottom: 2px solid rgb(195, 0, 255);
+	border-bottom: 2px solid green ;
 }
 
-
+.bottom-chart {
+	margin-bottom: 70px;
+}
 
 /* ------ USER STATS SECTION ------ */
 
@@ -86,8 +172,8 @@
 .left p, .right p {padding:5px;color:black; font-weight:bolder; }
 .left p {background-color: #2a26ff7a; border-radius: 10px; color: white; padding: 5px 15px;}
 .right p {background-color: #2a26ff7a; border-radius: 10px; color: white; padding: 5px 15px;}
-.bestPercentage {float:right;color:rgb(0, 143, 0);}
-.worstPercentage {float:right;color:rgb(193, 0, 0);}
+.bestPercentage {float:right;color:rgb(0, 89, 0);}
+.worstPercentage {float:right;color:rgb(141, 0, 0);}
 
 /* ------ LEADER BOARD SECTION ------ */
 
@@ -133,8 +219,6 @@
 .howToTitle {
 	color: white
 }
-
-
 
 
 /* ------ MYSTERY COIN SECTION ------ */
@@ -218,7 +302,6 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    background-color: white;
     align-content: flex-start;
 	background-color: rgba(255, 255, 255, 0);
 	justify-content: left;
@@ -260,8 +343,6 @@
 .chart {
 	padding-left: 100px
 }
-
-
 
 
 
@@ -2545,12 +2626,10 @@ input, select, textarea {
 
 			#main > section.one {
 			
-	
-				background-image: url("../../images/target2.png"), linear-gradient(to right, #4579ff, black
-				);
-			
-				/* background-image: url("../../images/target-background.jpeg"); */
+				/* ("../../images/target2.png") */
+
 			}
+				
 
 			.howToContainer	{
 				background-color: linear-gradient(to right, #4579ff black);

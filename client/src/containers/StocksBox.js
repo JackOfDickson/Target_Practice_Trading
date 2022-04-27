@@ -218,28 +218,44 @@ const StocksBox = () => {
         saveUser(createUser)
     }
 
+    const loginModalStyle = {
+        content: {
+            backgroundColor: 'black',
+            // borderRadius: "50px",
+            // justifyContent: 'center',
+            // alignSelf: 'center',
+            // width: '600px',
+            // position:"relative",
+
+            
+       }}
+
    
 
     return (
         <>
-            <ReactModal
+            <ReactModal 
+            style={loginModalStyle}
             isOpen={isModalOpen}
             ariaHideApp={false}
-
+            
             >
-                <h2>Welcome to Target Practice Trading</h2>
+                <div class="login-image"><img src={require('../images/TARGET-PRACTICE.png')} alt="" width="200"/></div>
+                <h3 class="login-header">Welcome to Target Practice Trading</h3>
                 <form onSubmit={handleLogin}>
-                <label for='user'>Select User</label>
-                <select name='user'id='user' required>
+                <br></br>
+                <div class="login-select-bar"><select name='user'id='user' required>
                     <option>Select User</option>
                     {users}
-                </select>
-                <button type='submit'>Login</button>
+                </select></div>
+               
+                <div class="login-button-container"><button type='submit' class="login-button">Login</button></div>
                 </form>
-                <button onClick={handleSignUpClick}>Sign Up</button>
+                <div class="login-button-container"><button onClick={handleSignUpClick} class="login-button">Sign Up</button></div>
               
             </ReactModal>
             <ReactModal
+                style={loginModalStyle}
                 isOpen={signUpModal}
                 ariaHideApp={false}>
                     <SignUpForm handleSignUpClick={handleSignUpClick} allUsers={allUsers} registerUser={registerUser}/>

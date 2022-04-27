@@ -36,7 +36,9 @@ const Stock = ({coin, addCrypto, cashWallet}) => {
         position: 'fixed',
         right: 'auto',
         top: '50%', // start from center
+
         background: 'linear-gradient(to right, rgba(0, 0, 0, 0.733), #457affc7)',
+
         width: '40%',
         maxWidth: '40rem',
         transform: 'translate(-40%, -10%)'
