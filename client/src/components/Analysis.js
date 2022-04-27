@@ -180,7 +180,7 @@ const Analysis = () => {
     return (
         <div id="analysis">
             <h3>Cryptocurrency Analysis <i class="fa-solid fa-chart-line"></i></h3>
-            <p>Bitcoin remains the most influential cryptocurrency in the market, so when goes up or down, 
+            <p>Bitcoin remains the most influential cryptocurrency in the market, so when it goes up or down, 
             the rest of the market tends to follow its lead.
             Ethereum and Binance remain highly influential on the market too.</p>
 

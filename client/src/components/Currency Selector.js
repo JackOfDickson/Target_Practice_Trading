@@ -59,7 +59,8 @@ const CurrencySelector = ({cryptos, onCurrencySelect, handleMysteryCoin, message
 
     return (
         <div id="mystery-coin" class="mystery-section" > 
-        <img src={require("./css/mystery-coin.gif")} height="100" id="mystery-title"></img>
+
+        <img src={require("./css/mystery-coin.gif")} height="100" id="mystery-title"></img><br></br>
        <div class="mystery-inst-container"><div class="mystery-inst">
        <ul>
            <li>Select a currency to gamble on our mystery coin</li>
@@ -68,6 +69,7 @@ const CurrencySelector = ({cryptos, onCurrencySelect, handleMysteryCoin, message
        </ul>
         
         </div></div>
+
         <div class="selection-bar"><select defaultValue="" onChange={handleSelect} required>
             <option value="" selected>Select a currency</option>
             {options}

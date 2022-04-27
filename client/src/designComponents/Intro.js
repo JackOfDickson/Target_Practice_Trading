@@ -14,7 +14,7 @@ const Intro = () => {
                 </header>
 
                 <footer>
-                    <a href="#portfolio" class="button scrolly">START NOW</a>
+                    <a href="#market"  class="button scrolly">START NOW</a>
                 </footer>
 
             </div>
