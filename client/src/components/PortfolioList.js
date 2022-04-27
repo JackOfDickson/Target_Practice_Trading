@@ -8,7 +8,7 @@ const PortfolioList = ({portfolio, sellCrypto, investmentValue, cash})=>
         if (investmentValue)
         {
           
-            const currentValue = investmentValue.find(cry=> cry.coin === coin.coin.name)
+            const currentValue = investmentValue[index]
             if(currentValue){
                 return (
                 <PortfolioItem coin={coin} index={index} key={index} sellCrypto={sellCrypto} liveUpdate={currentValue.sell_price}/>
@@ -31,9 +31,9 @@ const PortfolioList = ({portfolio, sellCrypto, investmentValue, cash})=>
         <section id="portfolio" class="four">
         <div class="container">
             <header>
-                <h2>Portfolio</h2>
+            <h2 class="port-title">Portfolio <i class="fa-solid fa-th"></i></h2>
             </header>
-        {portfolioNodes}
+        <div className="portfolio-box">{portfolioNodes}</div>
         <PortfolioCharts portfolio={portfolio} cash={cash}/>
         
         </div>
