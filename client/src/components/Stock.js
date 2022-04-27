@@ -34,7 +34,6 @@ const Stock = ({coin, addCrypto, cashWallet}) => {
         position: 'fixed',
         right: 'auto',
         top: '50%', // start from center
-        
         width: '40%',
         maxWidth: '40rem',
         transform: 'translate(-40%, -10%)'

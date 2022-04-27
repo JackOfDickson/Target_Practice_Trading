@@ -150,13 +150,13 @@ const Analysis = () => {
             />
 
 
-            <Chart
+            <div class="bottom-chart"><Chart
                 chartType="LineChart"
                 width="100%"
                 height="400px"
                 data={binanceData}
                 options={binanceOptions}
-            />
+            /></div>
 
         </div>
     )
