@@ -18,3 +18,19 @@ export const updateServer = (data, id)=>
 }
 
 // updates the user object on database
+
+export const getOneUser = (id)=>
+{
+    return fetch(baseUrl + id)
+    .then(re=> re.json());
+}
+
+export const saveUser = (data)=>
+{
+    return fetch(baseUrl,
+        {
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers: {'Content-Type': 'application/json'}
+        })
+}
