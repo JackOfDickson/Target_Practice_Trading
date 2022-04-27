@@ -1,22 +1,24 @@
 import './css/UserStats.css';
 import { Chart } from "react-google-charts";
+import { CurrencyFormatter } from './CurrencyFormatter';
 
 
 const UserStats = ({activeUser, investmentValue}) => {
 
-     const activeBalance = parseFloat(activeUser.cash).toFixed(2).toLocaleString("en-US"); // format cash
+    const activeBalance = CurrencyFormatter(activeUser.cash); // format balance
 
     const numberOfInvestments = (activeUser.portfolio).length; // Number of purchases
 
     // Map crypto portfolio
     const cryptosPurchased = activeUser.portfolio.map ((crypto) => { 
 
-  const purchasePrice = parseFloat(crypto.coin.priceUsd).toFixed(2).toLocaleString("en-UK"); // Format price
+    const purchasePrice = CurrencyFormatter(crypto.coin.priceUsd);
+
 
         return (
         <>
         <br />• {crypto.coin.name} ({crypto.coin.symbol}) - ${crypto.investment}
-        <br /><em>Bought at ${purchasePrice}</em>
+        <br /><em>Bought at {purchasePrice}</em>
         </>
         )
     });
@@ -60,12 +62,12 @@ for (let i = 0; i < investmentArray.length; ++i) { // Run through each item in i
 
         investmentCalculation+=crypto.price;
 
-       const sellPrice = parseFloat(crypto.price).toFixed(2).toLocaleString("en-US"); // Format crypto price
 
+    const sellPrice = CurrencyFormatter(crypto.price);
 
         return (
             <>
-                <br />• {crypto.name} investment is now worth ${sellPrice}
+                <br />• {crypto.name} investment is now worth {sellPrice}
             </>
             )        
     });
@@ -76,11 +78,10 @@ for (let i = 0; i < investmentArray.length; ++i) { // Run through each item in i
 
    // Calculation and formatting for cash and crypto balances
 
-    const investmentTotalValue = parseFloat(investmentCalculation).toFixed(2).toLocaleString("en-US"); //Format investment calculation
+    const investmentTotalValue = CurrencyFormatter(investmentCalculation);  //Format investment calculation
 
     const workingBalance = parseFloat(activeUser.cash) + parseFloat(investmentCalculation); // Calculate total value of portfolio
-    const equityBalance = parseFloat(workingBalance).toFixed(2).toLocaleString("en-US"); // Format balance
-
+    const equityBalance = CurrencyFormatter(workingBalance); // Format balance
 
         
     // Data for User stats chart
@@ -152,9 +153,9 @@ for (let i = 0; i < investmentArray.length; ++i) { // Run through each item in i
                     <p>Cryptos Purchased: {cryptosPurchased}</p>
                 </div>
                 <div className="right">
-                <p>Equity Balance: ${equityBalance}
-                <br /><em>Cash Balance: ${activeBalance}</em>
-                <br /><em>Crypto Balance: ${investmentTotalValue}</em>
+                <p>Equity Balance: {equityBalance}
+                <br /><em>Cash Balance: {activeBalance}</em>
+                <br /><em>Crypto Balance: {investmentTotalValue}</em>
                 </p>
                 <p>Crypto Value: {investmentPortfolio}</p>
 

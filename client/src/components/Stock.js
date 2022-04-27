@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import ReactModal from 'react-modal';
+import { CurrencyFormatter } from './CurrencyFormatter';
 
 const Stock = ({coin, addCrypto, cashWallet}) => {
 
@@ -47,14 +48,21 @@ const Stock = ({coin, addCrypto, cashWallet}) => {
             setAmountInput(event.target.value)
         }
     }
-    const priceTo2Decimals = parseFloat(coin.priceUsd).toFixed(2); // Show price to two decimal places
-    const cryptoPrice = parseFloat(priceTo2Decimals).toLocaleString("en-US"); // Separate large numbers with commas
 
+    let cryptoPrice;
+    
+    if (coin.priceUsd < 0.1) {
+        cryptoPrice = CurrencyFormatter(coin.priceUsd); // Format coin price
+    } else {
+        cryptoPrice = CurrencyFormatter(coin.priceUsd); // Format coin price
+    }
+
+    
     return (
     <tr>
         <td>{coin.name}</td>
         <td>{coin.symbol}</td> 
-        <td>Price: ${cryptoPrice}</td>
+        <td>Price: {cryptoPrice}</td>
         <td>
             <button onClick={toggleModal}>Buy</button>
             <ReactModal
