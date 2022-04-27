@@ -19,6 +19,11 @@
 	color: red;
 }
 
+.message-container {
+	display: flex;
+  	justify-content: center;
+}
+
 
 /* ------ LOGIN SECTION ------ */
 
@@ -99,7 +104,7 @@
 }
 
 #movers-shakers h3 {
-    width:100%;
+    width:45%;
     border-bottom: 2px solid green;
     margin-bottom:15px;
 }
@@ -139,6 +144,8 @@
 
 .container > h3 {
 	border-bottom: 2px solid green ;
+	width: 45%;
+	margin-bottom:15px;
 }
 
 .bottom-chart {

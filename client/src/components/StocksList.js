@@ -1,6 +1,6 @@
 import Stock from "./Stock"
 import MoversShakers from './MoversShakers'
-import Analysis from "./analysis"
+import Analysis from "./Analysis"
 
 const StocksList = ({cryptos, addCrypto, cash, searchCryptos, searchTerm}) => {
 
