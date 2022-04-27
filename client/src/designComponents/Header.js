@@ -43,12 +43,7 @@ const Header = ({handleLogOut}) => {
             <div className="bottom">
 
                 {/*  Social Icons */}
-                    <ul className="icons">
-                        <li><a href="https://github.com/stephaniepboyne" className="icon solid fa-face-grin-stars"><span className="label">Stephanie</span></a></li>
-                        <li><a href="https://github.com/JackOfDickson" className="icon solid fa-face-grin-tongue-squint"><span className="label">Jack</span></a></li>
-                        <li><a href="https://github.com/Matt-Matthaiou" className="icon solid fa-face-laugh-wink"><span className="label">Matt</span></a></li>
-                        <li><a href="https://github.com/kevinmuldoon-github" className="icon solid fa-face-grin-tongue-wink"><span className="label">Kevin</span></a></li>
-    </ul>
+
 
             </div>
 
