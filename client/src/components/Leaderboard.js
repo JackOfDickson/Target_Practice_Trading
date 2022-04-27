@@ -19,8 +19,8 @@ const leaderBoard = sortRanks.map(rank=>
         if(rank.name === activeUser.name)
         {
 
-            return <li><strong class="user">{rank.name}  ${rank.equity.toFixed(2)}<span>&#8592;</span></strong></li>
-        }
+            return <li><strong class="user">{rank.name}  ${parseFloat(rank.equity).toFixed(2).toLocaleString("en-US")}<span>&#8592;</span></strong></li>
+        } 
         else
         {
             return <li>{rank.name}  ${rank.equity.toFixed(2)}</li>
