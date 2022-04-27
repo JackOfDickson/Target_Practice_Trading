@@ -60,8 +60,14 @@ const CurrencySelector = ({cryptos, onCurrencySelect, handleMysteryCoin, message
     return (
         <div id="mystery-coin" class="mystery-section" > 
         <img src={require("./css/mystery-coin.gif")} height="100" id="mystery-title"></img>
-       <div class="mystery-inst-container"><div class="mystery-inst"><p>Select a currency to gamble on our mystery coin. If the currency you select matches the currency of our mystery coin, you will recieve an investment of $5000 in the mystery coin without it affecting your balance.
-        However, if your selected currency does not match the currency of our mystery coin, $2000 will be deducted from your balance. Gamble wisely!</p></div></div>
+       <div class="mystery-inst-container"><div class="mystery-inst">
+       <ul>
+           <li>Select a currency to gamble on our mystery coin</li>
+           <li>If the currency you select matches the currency of our mystery coin, you will recieve an investment of $5000 in the mystery coin without it affecting your balance.</li>
+            <li>if your selected currency does not match the currency of our mystery coin, $2000 will be deducted from your balance so gamble wisely!</li>
+       </ul>
+        
+        </div></div>
         <div class="selection-bar"><select defaultValue="" onChange={handleSelect} required>
             <option value="" selected>Select a currency</option>
             {options}
