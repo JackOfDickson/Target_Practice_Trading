@@ -68,8 +68,25 @@ const Analysis = () => {
 
     const bitcoinOptions = {
         title: "Bitcoin Price (USD)",
+        titleTextStyle: {color: "white"},
+        colors :['yellow'],
         curveType: "function",
         legend: { position: "bottom" },
+        backgroundColor: {
+            fill: 'none'},
+        hAxis: {
+            textStyle: {
+                color: "white"
+         }},
+        vAxis: {
+            textStyle: {
+            color: '#ffffff'
+            }},
+            legend: {
+            textStyle: {
+                color: 'white'
+            }
+        }
     };
 
     // Format Ethereum API data for Charts
@@ -95,8 +112,25 @@ const Analysis = () => {
 
     const ethereumOptions = {
         title: "Ethereum Price (USD)",
+        titleTextStyle: {color: "white"},
+        colors :['yellow'],
         curveType: "function",
         legend: { position: "bottom" },
+        backgroundColor: {
+            fill: 'none'},
+        hAxis: {
+            textStyle: {
+                color: "white"
+         }},
+        vAxis: {
+            textStyle: {
+            color: '#ffffff'
+            }},
+            legend: {
+            textStyle: {
+                color: 'white'
+            }
+        }
     };
     
     // Format Binance Coin API data for Charts
@@ -122,8 +156,25 @@ const Analysis = () => {
 
     const binanceOptions = {
         title: "Binance Coin Price (USD)",
+        titleTextStyle: {color: "white"},
+        colors :['yellow'],
         curveType: "function",
         legend: { position: "bottom" },
+        backgroundColor: {
+            fill: 'none'},
+        hAxis: {
+            textStyle: {
+                color: "white"
+         }},
+        vAxis: {
+            textStyle: {
+            color: '#ffffff'
+            }},
+            legend: {
+            textStyle: {
+                color: 'white'
+            }
+        }
     };
 
     return (
