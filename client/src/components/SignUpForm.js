@@ -71,7 +71,7 @@ const SignUpForm = ({allUsers, handleSignUpClick, registerUser})=>
         <form class="form" onSubmit={handleUserFormSubmit}>
             <label class="login-header" htmlFor="name-input">Enter you name</label>
             <div class="login-select-bar2-container"><div class="login-select-bar2"><input type='text' name='name' id='id' value={nameInput} onChange={handleNameInput}/></div></div>
-            <div>{existingName? <p id="warning">name already in use</p>: <p></p>}</div>
+            <div class="message-container">{existingName? <p id="warning">name already in use</p>: <p></p>}</div>
             <label class="login-header" htmlFor="email-input">Enter your email</label>
             <div class="login-select-bar2-container"><div class="login-select-bar2"><input type='email' name='email-input' id='email-input' value={emailInput} onChange={handleEmailInput}/></div></div>
             <div class="message-container">{existingEmail? <p id='warning'>email already in use</p>: <p class="empty"></p>}</div>
