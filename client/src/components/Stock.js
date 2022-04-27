@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import ReactModal from 'react-modal';
+import { CurrencyFormatter } from './CurrencyFormatter';
 
 const Stock = ({coin, addCrypto, cashWallet}) => {
 
@@ -48,15 +49,24 @@ const Stock = ({coin, addCrypto, cashWallet}) => {
             setAmountInput(event.target.value)
         }
     }
-    const priceTo2Decimals = parseFloat(coin.priceUsd).toFixed(2); // Show price to two decimal places
-    const cryptoPrice = parseFloat(priceTo2Decimals).toLocaleString("en-US"); // Separate large numbers with commas
-    const cash = parseFloat(cashWallet).toFixed(2)
+    
+    const cash = CurrencyFormatter(cashWallet);
 
+
+    let cryptoPrice;
+    
+    if (coin.priceUsd < 0.1) {
+        cryptoPrice = CurrencyFormatter(coin.priceUsd); // Format coin price
+    } else {
+        cryptoPrice = CurrencyFormatter(coin.priceUsd); // Format coin price
+    }
+
+    
     return (
     <tr>
         <td>{coin.name}</td>
         <td>{coin.symbol}</td> 
-        <td>Price: ${cryptoPrice}</td>
+        <td>Price: {cryptoPrice}</td>
         <td>
             <button onClick={toggleModal}>Buy</button>
             <ReactModal
@@ -64,7 +74,7 @@ const Stock = ({coin, addCrypto, cashWallet}) => {
             isOpen={isBuyModalOpen}>
             <form onSubmit={handleBuySubmit} id='buy-form'>
 
-                <span>Available Cash: ${cash}</span><br></br>
+                <span>Available Cash: {cash}</span><br></br>
                 <input type='decimal' value={amountInput} min='0' onChange={handleAmountChange} required></input>
                 <button type='submit'>Buy {coin.name}</button>
                 <button onClick={toggleModal}>Cancel</button>
