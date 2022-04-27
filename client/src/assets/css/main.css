@@ -11,6 +11,14 @@
 }
 
 
+#buy-form > button{
+	margin: 10px;
+}
+
+#warning {
+	color: red;
+}
+
 
 /* ------ LOGIN SECTION ------ */
 
@@ -35,7 +43,7 @@
 .login-select-bar2-container {
 	display: flex;
   	justify-content: center;
-	margin-bottom: 10px;
+	
 	
 }
 
@@ -47,7 +55,13 @@
 	background-color: white;
 	text-align: center;
 	border-radius: 10px;
+	margin-bottom: 10px;
 }
+
+.empty {
+	background-color: black;
+}
+
 
 .login-select-bar > select {
 	text-align: center;
