@@ -118,9 +118,9 @@
 .best, .worst {flex:50%;padding:10px; }
 .best p, .worst p {padding:10px;font-weight: 700;color:black}
 .best p {background-color: #75ff9cca; border-radius: 10px; color: white;}
-.worst p {background-color: #f76565c6; border-radius: 10px; color: white;}
+.worst p {background-color: #ff8a8aef; border-radius: 10px; color: white;}
 .bestPercentage {float:right;color:rgb(52, 134, 52);text-shadow: 1px 1px white;}
-.worstPercentage {float:right;color:rgb(251, 1, 1);text-shadow: 1px 1px white;}
+.worstPercentage {float:right;color:rgb(127, 9, 9);text-shadow: 1px 1px white;}
 
 .table-button {
 	height: 38px;
