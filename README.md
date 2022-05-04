@@ -4,6 +4,41 @@ This application was created using Javascript, React, MongoDB, Express, JSX/HTML
 
 Created by Jack, Matt, Stephanie and Kevin :)
 
+<table>
+
+  <tr>
+    <td><img src="https://user-images.githubusercontent.com/100124261/166671218-2e28cc9d-96eb-4df8-b517-cc21efe19337.png" alt="Login Page" width="300" /></td>
+    <td><img src="https://user-images.githubusercontent.com/100124261/166671278-012b8497-d565-4ff2-87b0-5e321883e787.png" alt="Register User" width="300" /></td>
+    <td><img src="https://user-images.githubusercontent.com/100124261/166671320-5776e562-3dd4-456b-936c-48269c3cec9c.png" alt="Select User" width="300" /></td>
+  </tr>
+
+   <tr>
+    <td><img src="https://user-images.githubusercontent.com/100124261/166671372-05495fc1-8f6b-4c9c-a4e6-c2313703298b.png" alt="Introduction" width="300" /></td>
+    <td><img src="https://user-images.githubusercontent.com/100124261/166671419-e662b6f9-c87f-4839-88f6-83539a1bf497.png" alt="How to Play" width="300" /></td>
+    <td><img src="https://user-images.githubusercontent.com/100124261/166671465-891fc99e-1edf-471c-b3e9-e390bf9ff8b0.png" alt="User Stats" width="300" /></td>
+  </tr>
+
+   <tr>
+    <td><img src="https://user-images.githubusercontent.com/100124261/166671520-778476dd-b395-4f79-b186-e0d497beddb3.png" alt="User Stats" width="300" /></td>
+    <td><img src="https://user-images.githubusercontent.com/100124261/166671551-b20594f0-b853-40a5-833b-965e3b9466b4.png" alt="Portfolio" width="300" /></td>
+    <td><img src="https://user-images.githubusercontent.com/100124261/166671588-feb9f983-66d7-4fd3-a16b-ce7e1d42cd12.png" alt="Movers & Shakers" width="300" /></td>
+  </tr>
+
+   <tr>
+    <td><img src="https://user-images.githubusercontent.com/100124261/166671685-d529a139-be51-4968-b5c3-e2ee059145ec.png" alt="Cryptocurrency Analysis" width="300" /></td>
+    <td><img src="https://user-images.githubusercontent.com/100124261/166671726-4f017863-460a-48f8-8185-8d31c6beaa3a.png" alt="Cryptocurrencies" width="300" /></td>
+    <td><img src="https://user-images.githubusercontent.com/100124261/166671772-278ffbe9-9cfb-4b47-b1bc-4f7c2138ad6b.png" alt="Buy Bitcoin" width="300" /></td>
+  </tr>
+
+   <tr>
+    <td><img src="https://user-images.githubusercontent.com/100124261/166671927-f333c732-571a-469e-9586-d824b7d1615c.png" alt="Search Function" width="300" /></td>
+    <td><img src="https://user-images.githubusercontent.com/100124261/166671815-91eb7575-aec6-4fcd-ab24-638bf6a86481.png" alt="Mystery Coin" width="300" /></td>
+    <td><img src="https://user-images.githubusercontent.com/100124261/166671859-48a3a067-2464-4191-a013-3603647c1913.png" alt="Select Mystery Coin" width="300" /></td>
+  </tr>
+    
+    
+</table>
+
 ## Project Brief
 
 A local trader has come to you with a portfolio of cryptocurrencies that she wants to be able to analyse it more effectively. 
