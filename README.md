@@ -21,17 +21,17 @@ Created by Jack, Matt, Stephanie and Kevin :)
    <tr>
     <td><img src="https://user-images.githubusercontent.com/100124261/166671520-778476dd-b395-4f79-b186-e0d497beddb3.png" alt="User Stats" width="300" /></td>
     <td><img src="https://user-images.githubusercontent.com/100124261/166671551-b20594f0-b853-40a5-833b-965e3b9466b4.png" alt="Portfolio" width="300" /></td>
-    <td><img src="https://user-images.githubusercontent.com/100124261/166671588-feb9f983-66d7-4fd3-a16b-ce7e1d42cd12.png" alt="Movers & Shakers" width="300" /></td>
+    <td><img src="https://user-images.githubusercontent.com/100124261/166671685-d529a139-be51-4968-b5c3-e2ee059145ec.png" alt="Cryptocurrency Analysis" width="300" /></td>
   </tr>
 
    <tr>
-    <td><img src="https://user-images.githubusercontent.com/100124261/166671685-d529a139-be51-4968-b5c3-e2ee059145ec.png" alt="Cryptocurrency Analysis" width="300" /></td>
     <td><img src="https://user-images.githubusercontent.com/100124261/166671726-4f017863-460a-48f8-8185-8d31c6beaa3a.png" alt="Cryptocurrencies" width="300" /></td>
     <td><img src="https://user-images.githubusercontent.com/100124261/166671772-278ffbe9-9cfb-4b47-b1bc-4f7c2138ad6b.png" alt="Buy Bitcoin" width="300" /></td>
+         <td><img src="https://user-images.githubusercontent.com/100124261/166671927-f333c732-571a-469e-9586-d824b7d1615c.png" alt="Search Function" width="300" /></td>
   </tr>
 
    <tr>
-    <td><img src="https://user-images.githubusercontent.com/100124261/166671927-f333c732-571a-469e-9586-d824b7d1615c.png" alt="Search Function" width="300" /></td>
+
     <td><img src="https://user-images.githubusercontent.com/100124261/166671815-91eb7575-aec6-4fcd-ab24-638bf6a86481.png" alt="Mystery Coin" width="300" /></td>
     <td><img src="https://user-images.githubusercontent.com/100124261/166671859-48a3a067-2464-4191-a013-3603647c1913.png" alt="Select Mystery Coin" width="300" /></td>
   </tr>
